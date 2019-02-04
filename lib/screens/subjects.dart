@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'main_screen.dart';
 
-class Civics extends StatefulWidget {
-  CivicsState createState() => CivicsState();
+class Subjects {
+  String sub;
+  Color color1, color2;
+  Subjects({this.sub, this.color1, this.color2});
 }
 
-class CivicsState extends State<Civics> {
+class Sample extends StatefulWidget {
+  SampleState createState() => SampleState();
+}
+
+class SampleState extends State<Sample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +28,7 @@ class CivicsState extends State<Civics> {
                         margin: EdgeInsets.only(bottom: 30.0),
                       ),
                       Text(
-                        'CIVICS',
+                        '$sub',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 40.0),
@@ -32,7 +39,7 @@ class CivicsState extends State<Civics> {
                       gradient: LinearGradient(
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
-                          colors: [Colors.green[200], Colors.green[300]])),
+                          colors: [color1, color2])),
                 )),
             Container(
               margin: EdgeInsets.only(bottom: 50.0),
@@ -48,10 +55,7 @@ class CivicsState extends State<Civics> {
                               gradient: LinearGradient(
                                   begin: Alignment.centerLeft,
                                   end: Alignment.centerRight,
-                                  colors: [
-                                Colors.green[200],
-                                Colors.green[300]
-                              ])),
+                                  colors: [color1, color2])),
                           child: Column(
                             children: <Widget>[
                               IconButton(
@@ -77,10 +81,7 @@ class CivicsState extends State<Civics> {
                               gradient: LinearGradient(
                                   begin: Alignment.centerLeft,
                                   end: Alignment.centerRight,
-                                  colors: [
-                                Colors.green[200],
-                                Colors.green[200]
-                              ])),
+                                  colors: [color1, color2])),
                           child: Column(
                             children: <Widget>[
                               IconButton(
@@ -113,10 +114,7 @@ class CivicsState extends State<Civics> {
                               gradient: LinearGradient(
                                   begin: Alignment.centerLeft,
                                   end: Alignment.centerRight,
-                                  colors: [
-                                Colors.green[200],
-                                Colors.green[200]
-                              ])),
+                                  colors: [color1, color2])),
                           child: Column(
                             children: <Widget>[
                               IconButton(
@@ -142,10 +140,7 @@ class CivicsState extends State<Civics> {
                               gradient: LinearGradient(
                                   begin: Alignment.centerLeft,
                                   end: Alignment.centerRight,
-                                  colors: [
-                                Colors.green[200],
-                                Colors.green[300]
-                              ])),
+                                  colors: [color1, color2])),
                           child: Column(
                             children: <Widget>[
                               IconButton(
@@ -161,7 +156,8 @@ class CivicsState extends State<Civics> {
                               )
                             ],
                           ),
-                        )))
+                        )
+                        ))
               ],
             ),
             Container(
@@ -174,4 +170,5 @@ class CivicsState extends State<Civics> {
       ),
     );
   }
+
 }

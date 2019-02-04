@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'attendance.dart';
 import 'testscores.dart';
-import 'science.dart';
 
 String sub = '';
-
+Color color1, color2;
 
 class MainScreen extends StatefulWidget {
   MainScreenState createState() => MainScreenState();
@@ -106,6 +105,8 @@ class MainScreenState extends State<MainScreen> {
                                 alignment: Alignment.centerLeft,
                                 iconSize: 50.0,
                                 onPressed: () {
+                                  color1 = Colors.cyan[200];
+                                  color2 = Colors.cyan;
                                   sub = 'SCIENCE';
                                   Navigator.pushNamed(context, '/science');
                                 },
@@ -148,6 +149,8 @@ class MainScreenState extends State<MainScreen> {
                                 alignment: Alignment.centerLeft,
                                 iconSize: 50.0,
                                 onPressed: () {
+                                  color1 = Colors.yellow[300];
+                                  color2 = Colors.orange[300];
                                   sub = 'MATHS';
                                   Navigator.pushNamed(context, '/science');
                                 },
@@ -197,8 +200,10 @@ class MainScreenState extends State<MainScreen> {
                                 alignment: Alignment.centerLeft,
                                 iconSize: 50.0,
                                 onPressed: () {
-                                  sub = 'SCIENCE';
-                                  Navigator.pushNamed(context, '/history');
+                                  sub = 'HISTORY';
+                                  color1 = Colors.brown[100];
+                                  color2 = Colors.brown[200];
+                                  Navigator.pushNamed(context, '/science');
                                 },
                                 icon: Image.asset('assets/his_icon.png')),
                             Text('HISTORY',
@@ -242,8 +247,10 @@ class MainScreenState extends State<MainScreen> {
                                 alignment: Alignment.centerLeft,
                                 iconSize: 50.0,
                                 onPressed: () {
-                                  sub = 'SCIENCE';
-                                  Navigator.pushNamed(context, '/civics');
+                                  color1 = Colors.green[200];
+                                  color2 = Colors.green[300];
+                                  sub = 'CIVICS';
+                                  Navigator.pushNamed(context, '/science');
                                 },
                                 icon: Image.asset('assets/civ_icon.jpg')),
                             Text('CIVICS',
@@ -291,8 +298,10 @@ class MainScreenState extends State<MainScreen> {
                                 alignment: Alignment.centerLeft,
                                 iconSize: 50.0,
                                 onPressed: () {
-                                  sub = 'SCIENCE';
-                                  Navigator.pushNamed(context, '/geo');
+                                  color1 = Colors.blue[100];
+                                  color2= Colors.blue[300];
+                                  sub = 'GEOGRAPHY';
+                                  Navigator.pushNamed(context, '/science');
                                 },
                                 icon: Image.asset('assets/geo_icon.png')),
                             Text('GEO',
@@ -332,8 +341,10 @@ class MainScreenState extends State<MainScreen> {
                                 alignment: Alignment.centerLeft,
                                 iconSize: 50.0,
                                 onPressed: () {
-                                  sub = 'SCIENCE';
-                                  Navigator.pushNamed(context, '/second');
+                                  color1 = Colors.red[100];
+                                  color2 = Colors.red[400];
+                                  sub = 'HINDI';
+                                  Navigator.pushNamed(context, '/science');
                                 },
                                 icon: Image.asset('assets/hin_icon.png')),
                             Text('HINDI',
@@ -377,8 +388,10 @@ class MainScreenState extends State<MainScreen> {
                                 alignment: Alignment.centerLeft,
                                 iconSize: 50.0,
                                 onPressed: () {
-                                  sub = 'SCIENCE';
-                                  Navigator.pushNamed(context, '/eng');
+                                  color1 = Colors.grey[350];
+                                  color2 = Colors.black;
+                                  sub = 'ENGLISH';
+                                  Navigator.pushNamed(context, '/science');
                                 },
                                 icon: Image.asset('assets/eng_icon.png')),
                             Text('ENGLISH',
@@ -424,8 +437,10 @@ class MainScreenState extends State<MainScreen> {
                                 alignment: Alignment.centerLeft,
                                 iconSize: 50.0,
                                 onPressed: () {
-                                  sub = 'SCIENCE';
-                                  Navigator.pushNamed(context, '/second');
+                                  color1 = Colors.pink[100];
+                                  color2 = Colors.pink;
+                                  sub = 'FRENCH';
+                                  Navigator.pushNamed(context, '/science');
                                 },
                                 icon: Image.asset('assets/fre_icon.jpg')),
                             Text('FRENCH',
