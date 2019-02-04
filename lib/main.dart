@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget{
         initialRoute: '.',
         routes: {
           '.':(context) => MainScreen(),
-          '/science': (context) => Sample()
+          '/science': (context) => SubjectViewModel()
         },
     );
   }
