@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:techshiksha_student/screens/navigation_screen.dart';
 import 'screens/main_screen.dart';
 import 'screens/subjects.dart';
+import 'screens/nav.dart';
 
 void main(){
   runApp(MyApp());
