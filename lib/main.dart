@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:techshiksha_student/screens/navigation_screen.dart';
 import 'screens/main_screen.dart';
 import 'screens/subjects.dart';
 
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget{
         initialRoute: '.',
         routes: {
           '.':(context) => MainScreen(),
-          '/science': (context) => SubjectViewModel()
+          '/science': (context) => SubjectViewModel(),
+          '/navscreen':(context)=>NavigationScreen()
         },
     );
   }
