@@ -6,6 +6,43 @@ import 'subjects.dart';
 String sub = '';
 Color color1, color2;
 
+class Drawer1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: <Widget>[
+          new UserAccountsDrawerHeader(
+            accountName: new Text('Ritik Rathi'),
+            accountEmail: new Text('testemail@test.com'),
+            currentAccountPicture: new CircleAvatar(
+              backgroundImage: new NetworkImage('http://i.pravatar.cc/300'),
+            ),
+          ),
+          new ListTile(
+              title: new Text('Test Scores'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (BuildContext context) => new TestScore()));
+              }),
+          new ListTile(
+              title: new Text('Attendance'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (BuildContext context) => new Attendance()));
+              })
+        ],
+      ),
+    );
+  }
+}
+
 class MainScreen extends StatefulWidget {
   MainScreenState createState() => MainScreenState();
 }
@@ -18,39 +55,7 @@ class MainScreenState extends State<MainScreen> {
         // appBar: new AppBar(
         //   title: Text('SUBJECTS'),
         // ),
-        drawer: new Drawer(
-          child: ListView(
-            children: <Widget>[
-              new UserAccountsDrawerHeader(
-                accountName: new Text('Ritik Rathi'),
-                accountEmail: new Text('testemail@test.com'),
-                currentAccountPicture: new CircleAvatar(
-                  backgroundImage: new NetworkImage('http://i.pravatar.cc/300'),
-                ),
-              ),
-              new ListTile(
-                  title: new Text('Test Scores'),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    Navigator.push(
-                        context,
-                        new MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                new TestScore()));
-                  }),
-              new ListTile(
-                  title: new Text('Attendance'),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    Navigator.push(
-                        context,
-                        new MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                new Attendance()));
-                  })
-            ],
-          ),
-        ),
+        drawer: Drawer1(),
         body: new Container(
             decoration: new BoxDecoration(
                 image: new DecorationImage(
@@ -63,7 +68,9 @@ class MainScreenState extends State<MainScreen> {
                       margin: EdgeInsets.only(top: 20.0, left: 10.0),
                       child: IconButton(
                         icon: Image.asset('assets/drawer.png'),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/drawer');
+                        },
                         iconSize: 40.0,
                         alignment: Alignment.centerLeft,
                         padding: EdgeInsets.only(left: 0.1),
@@ -110,7 +117,9 @@ class MainScreenState extends State<MainScreen> {
                     ],
                   ),
                 ),
-                new SizedBox(height: 20.0,),
+                new SizedBox(
+                  height: 20.0,
+                ),
                 new Row(
                   children: <Widget>[
                     Expanded(
@@ -124,7 +133,9 @@ class MainScreenState extends State<MainScreen> {
                     )
                   ],
                 ),
-                new SizedBox(height: 20.0,),
+                new SizedBox(
+                  height: 20.0,
+                ),
                 new Row(
                   children: <Widget>[
                     Expanded(
@@ -138,7 +149,9 @@ class MainScreenState extends State<MainScreen> {
                     )
                   ],
                 ),
-                new SizedBox(height: 20.0,),
+                new SizedBox(
+                  height: 20.0,
+                ),
                 new Row(
                   children: <Widget>[
                     Expanded(

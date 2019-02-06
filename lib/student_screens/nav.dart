@@ -23,8 +23,10 @@ class Cards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       child: DecoratedBox(
         decoration: new BoxDecoration(
+            borderRadius: new BorderRadius.all(const Radius.circular(10.0)),
             gradient: LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
@@ -33,7 +35,9 @@ class Cards extends StatelessWidget {
           children: <Widget>[
             IconButton(
               icon: Image.asset(subs.img),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/ncert');
+              },
               iconSize: 50.0,
             ),
             Text(
