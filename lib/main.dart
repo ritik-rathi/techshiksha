@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget{
           '/science': (context) => SubjectViewModel(),
           '/navscreen':(context)=>NavigationScreen(),
           '/ncert': (context) => Ncert(),
-          '/drawer': (context) => Drawer1()
+          // '/drawer': (context) => Drawer1()
         },
     );
   }
