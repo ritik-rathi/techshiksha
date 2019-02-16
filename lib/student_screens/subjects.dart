@@ -48,8 +48,8 @@ final subjects = [
   new Subjects(
       sub: 'English',
       imgPath: 'assets/eng_icon.png',
-      color1: Colors.grey[100],
-      color2: Colors.black),
+      color1: Colors.grey[300],
+      color2: Colors.grey),
   new Subjects(
       sub: 'French',
       imgPath: 'assets/fre_icon.jpg',

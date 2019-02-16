@@ -53,6 +53,18 @@ class MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: FlipBoxBar(
+          items: [
+            FlipBarItem(icon: Icon(Icons.account_circle,size:10.0,), text: Text("Profile"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+            FlipBarItem(icon: Icon(Icons.add), text: Text("Add"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+            FlipBarItem(icon: Icon(Icons.chrome_reader_mode), text: Text("Read"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+            FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+            FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+          ],
+          onIndexChanged: (newIndex) {
+            print(newIndex);
+          },
+        ),
         // appBar: new AppBar(
         //   title: Text('SUBJECTS'),
         // ),
@@ -240,18 +252,7 @@ class MainScreenState extends State<MainScreen> {
           )
         ],
       ),
-      FlipBoxBar(
-          items: [
-            FlipBarItem(icon: Icon(Icons.map,size:10.0,), text: Text("Map"), frontColor: Colors.blue, backColor: Colors.blueAccent),
-            FlipBarItem(icon: Icon(Icons.add), text: Text("Add"), frontColor: Colors.cyan, backColor: Colors.cyanAccent),
-            FlipBarItem(icon: Icon(Icons.chrome_reader_mode), text: Text("Read"), frontColor: Colors.orange, backColor: Colors.orangeAccent),
-            FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.purple, backColor: Colors.purpleAccent),
-            FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.pink, backColor: Colors.pinkAccent),
-          ],
-          onIndexChanged: (newIndex) {
-            print(newIndex);
-          },
-        ),
+      
     
     ]),
       // bottomNavigationBar: FlipBoxBar(

@@ -54,7 +54,19 @@ class _FlipBoxBarState extends State<FlipBoxBar> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100.0,
+      decoration: new BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            width: 5.0,
+            color: Colors.black
+          ),
+          bottom: BorderSide(
+            width: 5.0,
+            color: Colors.black
+          )
+        )
+      ),
+      height: 85.0,
       child: Row(
         children: widget.items.map((item) {
           int index = widget.items.indexOf(item);
@@ -99,11 +111,14 @@ class FlipBarItem {
   /// The color of the top side (Towards the user when selected).
   final Color backColor;
 
+ // final Widget container;
+
   FlipBarItem({
     @required this.icon,
     @required this.text,
     this.frontColor = Colors.blueAccent,
     this.backColor = Colors.blue,
+  
   });
 }
 

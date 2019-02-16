@@ -10,7 +10,7 @@ class SubDetail {
 
 final titles = [
   new SubDetail(title: 'NCERT', img: 'assets/book.png'),
-  new SubDetail(title: 'NOTES', img: 'assets/notes.png'),
+  new SubDetail(title: 'NOTES', img:    'assets/notes.png'),
   new SubDetail(title: 'TESTS', img: 'assets/test.png'),
   new SubDetail(title: 'HW', img: 'assets/hw1.png'),
   new SubDetail(title: 'REF.', img: 'assets/book.png')
