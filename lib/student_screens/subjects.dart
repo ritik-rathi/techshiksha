@@ -17,7 +17,7 @@ class Subjects {
 final subjects = [
   new Subjects(
       sub: 'Science',
-      imgPath: 'assets/sci_icon.png',
+      imgPath: 'assets/science_col.png',
       color1: Colors.cyan[200],
       color2: Colors.cyan),
   new Subjects(
@@ -27,27 +27,27 @@ final subjects = [
       color2: Colors.orange[300]),
   new Subjects(
       sub: 'History',
-      imgPath: 'assets/his_icon.png',
+      imgPath: 'assets/his_col.jpg',
       color1: Colors.brown[100],
       color2: Colors.brown[200]),
   new Subjects(
       sub: 'Civics',
-      imgPath: 'assets/civ_icon.jpg',
+      imgPath: 'assets/civ_col.jpg',
       color1: Colors.green[200],
       color2: Colors.green[300]),
   new Subjects(
       sub: 'Geography',
-      imgPath: 'assets/geo_icon.png',
+      imgPath: 'assets/geo_col.jpg',
       color1: Colors.blue[100],
       color2: Colors.blue[300]),
   new Subjects(
       sub: 'Hindi',
-      imgPath: 'assets/hin_icon.png',
+      imgPath: 'assets/hin_col.png',
       color1: Colors.red[100],
       color2: Colors.red[400]),
   new Subjects(
       sub: 'English',
-      imgPath: 'assets/eng_icon.png',
+      imgPath: 'assets/eng_col.png',
       color1: Colors.grey[300],
       color2: Colors.grey),
   new Subjects(
@@ -67,17 +67,16 @@ class SubjectViewModel extends StatelessWidget {
   SubjectViewModel({this.subject});
   @override
   Widget build(BuildContext context) {
-    return new Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-      color: Colors.white,
+    return new Container(
+      //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+      //color: Colors.white,
       margin: EdgeInsets.only(left: 5.0, right: 10.0, top: 20.0),
-      child: DecoratedBox(
-        child: Row(
+      child:  Column(
           children: <Widget>[
             new IconButton(
                 color: Colors.white,
                 alignment: Alignment.centerLeft,
-                iconSize: 50.0,
+                iconSize: 75.0,
                 onPressed: () {
                   // color1 = Colors.cyan[200];
                   // color2 = Colors.cyan;
@@ -96,18 +95,18 @@ class SubjectViewModel extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 20.0,
                     fontStyle: FontStyle.italic,
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold))
           ],
         ),
-        decoration: new BoxDecoration(
-            borderRadius: new BorderRadius.all(const Radius.circular(10.0)),
-            shape: BoxShape.rectangle,
-            gradient: LinearGradient(
-                begin: FractionalOffset.centerLeft,
-                end: FractionalOffset.centerRight,
-                colors: [subject.color1, subject.color2])),
-      ),     
+        // decoration: new BoxDecoration(
+        //     borderRadius: new BorderRadius.all(const Radius.circular(10.0)),
+        //     shape: BoxShape.rectangle,
+        //     gradient: LinearGradient(
+        //         begin: FractionalOffset.centerLeft,
+        //         end: FractionalOffset.centerRight,
+        //         colors: [subject.color1, subject.color2])),
+           
     );
   }
 }

@@ -67,6 +67,12 @@ flutter:
     - assets/profile.png
     - assets/testscore.png
     - assets/settings.png
+    - assets/science_col.png
+    - assets/his_col.jpg
+    - assets/civ_col.jpg
+    - assets/geo_col.jpg
+    - assets/hin_col.png
+    - assets/eng_col.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
