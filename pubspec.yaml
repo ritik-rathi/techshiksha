@@ -63,6 +63,10 @@ flutter:
     - assets/notes.png
     - assets/test.png
     - assets/hw1.png 
+    - assets/attendance.png
+    - assets/profile.png
+    - assets/testscore.png
+    - assets/settings.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

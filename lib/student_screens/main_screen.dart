@@ -53,13 +53,90 @@ class MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, 150),
+        child: new Container(
+        height: 150.0,
+        width: double.infinity,
+        decoration: new BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.teal,Colors.white]
+          )
+        ),
+        child: Stack(
+          children: <Widget>[
+            new Positioned(
+              top: 20.0,
+              left: 20.0,
+              child: new Text(
+                'Hello!',
+                style: new TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold
+                )
+              ),
+            ),
+            new Positioned(
+              top: 60.0,
+              left: 20.0,
+              child: new Text(
+                //TODO: Implement username after backend
+                'Rathi',
+                style:new TextStyle(
+                  fontSize: 40.0,
+                  fontWeight: FontWeight.bold
+                )
+              ),
+            ),
+
+            //circle
+
+            new Positioned(
+              top: 0.0,
+              left: 10.0,
+              child: Container(
+                height: 300.0,
+                width: 300.0,
+                decoration: new BoxDecoration(
+                  borderRadius: BorderRadius.circular(150.0),
+                  color: Colors.white10
+                ),
+              ),
+            ),
+             new Positioned(
+              bottom: 20.0,
+              right: 10.0,
+              child: Container(
+                height: 300.0,
+                width: 300.0,
+                decoration: new BoxDecoration(
+                  borderRadius: BorderRadius.circular(150.0),
+                  color: Colors.white10
+                ),
+              ),
+            ),
+            Positioned(
+              top: 20.0,
+              right: 40.0,
+              child: new IconButton(
+                icon: Image.asset('assets/profile.png'),
+                onPressed: (){},
+                iconSize: 100.0,
+              ),
+            )
+          ],
+        ),
+      ),
+      ),
       bottomNavigationBar: FlipBoxBar(
           items: [
-            FlipBarItem(icon: Icon(Icons.account_circle,size:10.0,), text: Text("Profile"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
-            FlipBarItem(icon: Icon(Icons.add), text: Text("Add"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
-            FlipBarItem(icon: Icon(Icons.chrome_reader_mode), text: Text("Read"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
-            FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
-            FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+            FlipBarItem(icon: new Image.asset('assets/profile.png', height: 30.0, width: 30.0), text: Text("Profile"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+            FlipBarItem(icon: new Image.asset('assets/attendance.png', height: 30.0, width: 30.0), text: Text("Attendance"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+            FlipBarItem(icon: new Image.asset('assets/testscore.png', height: 30.0, width: 30.0), text: Text("Scores"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+            //FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+            //FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
           ],
           onIndexChanged: (newIndex) {
             print(newIndex);
@@ -111,84 +188,12 @@ class MainScreenState extends State<MainScreen> {
       //   margin: EdgeInsets.only(left: 10.0),
       // ),
 
-      new Container(
-        height: 150.0,
-        width: double.infinity,
-        decoration: new BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomRight,
-            colors: [Colors.blue[200],Colors.red[400]]
-          )
-        ),
-        child: Stack(
-          children: <Widget>[
-            new Positioned(
-              top: 20.0,
-              left: 20.0,
-              child: new Text(
-                'Hello!',
-                style: new TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold
-                )
-              ),
-            ),
-            new Positioned(
-              top: 60.0,
-              left: 20.0,
-              child: new Text(
-                //TODO: Implement username after backend
-                'Rathi',
-                style:new TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold
-                )
-              ),
-            ),
-
-            //circle
-
-            new Positioned(
-              top: 0.0,
-              left: 10.0,
-              child: Container(
-                height: 300.0,
-                width: 300.0,
-                decoration: new BoxDecoration(
-                  borderRadius: BorderRadius.circular(150.0),
-                  color: Colors.white10
-                ),
-              ),
-            ),
-             new Positioned(
-              bottom: 20.0,
-              right: 10.0,
-              child: Container(
-                height: 300.0,
-                width: 300.0,
-                decoration: new BoxDecoration(
-                  borderRadius: BorderRadius.circular(150.0),
-                  color: Colors.white10
-                ),
-              ),
-            ),
-            Positioned(
-              top: 20.0,
-              right: 20.0,
-              child: new Icon(
-                Icons.settings,
-                size: 25.0
-              ),
-            )
-          ],
-        ),
-      ),
+      
 
       // iconbuttons for various subjects
 
       Padding(
-        padding: const EdgeInsets.only(top: 16.0),
+        padding: const EdgeInsets.only(top: 10.0),
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -205,7 +210,7 @@ class MainScreenState extends State<MainScreen> {
         ),
       ),
       new SizedBox(
-        height: 20.0,
+        height: 10.0,
       ),
       new Row(
         children: <Widget>[
@@ -221,7 +226,7 @@ class MainScreenState extends State<MainScreen> {
         ],
       ),
       new SizedBox(
-        height: 20.0,
+        height: 10.0,
       ),
       new Row(
         children: <Widget>[
@@ -237,7 +242,7 @@ class MainScreenState extends State<MainScreen> {
         ],
       ),
       new SizedBox(
-        height: 20.0,
+        height: 10.0,
       ),
       new Row(
         children: <Widget>[

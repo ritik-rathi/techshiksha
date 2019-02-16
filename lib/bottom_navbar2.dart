@@ -20,7 +20,7 @@ class FlipBoxBar extends StatefulWidget {
 
   FlipBoxBar({
     this.items,
-    this.animationDuration = const Duration(seconds: 1),
+    this.animationDuration = const Duration(seconds: 1),  
     @required this.onIndexChanged,
     this.initialIndex = 0,
     this.navBarHeight = 75.0,
