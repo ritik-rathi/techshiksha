@@ -73,6 +73,10 @@ flutter:
     - assets/geo_col.jpg
     - assets/hin_col.png
     - assets/eng_col.png
+    - assets/book_col.png
+    - assets/notes_col.png
+    - assets/hw_col.png
+    - assets/test_col.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

@@ -18,43 +18,43 @@ final subjects = [
   new Subjects(
       sub: 'Science',
       imgPath: 'assets/science_col.png',
-      color1: Colors.cyan[200],
-      color2: Colors.cyan),
+      color1: Colors.cyan[50],
+      color2: Colors.cyan[300]),
   new Subjects(
       sub: 'Maths',
       imgPath: 'assets/math_icon.png',
-      color1: Colors.yellow[300],
-      color2: Colors.orange[300]),
+      color1: Colors.yellow[50],
+      color2: Colors.yellow[300]),
   new Subjects(
       sub: 'History',
       imgPath: 'assets/his_col.jpg',
-      color1: Colors.brown[100],
-      color2: Colors.brown[200]),
+      color1: Colors.orange[50],
+      color2: Colors.orange[300]),
   new Subjects(
       sub: 'Civics',
       imgPath: 'assets/civ_col.jpg',
-      color1: Colors.green[200],
+      color1: Colors.green[50],
       color2: Colors.green[300]),
   new Subjects(
       sub: 'Geography',
       imgPath: 'assets/geo_col.jpg',
-      color1: Colors.blue[100],
+      color1: Colors.blue[50],
       color2: Colors.blue[300]),
   new Subjects(
       sub: 'Hindi',
       imgPath: 'assets/hin_col.png',
-      color1: Colors.red[100],
-      color2: Colors.red[400]),
+      color1: Colors.red[50],
+      color2: Colors.red[300]),
   new Subjects(
       sub: 'English',
       imgPath: 'assets/eng_col.png',
-      color1: Colors.grey[300],
-      color2: Colors.grey),
+      color1: Colors.purple[50],
+      color2: Colors.purple[300]),
   new Subjects(
       sub: 'French',
       imgPath: 'assets/fre_icon.jpg',
-      color1: Colors.pink[100],
-      color2: Colors.pink)
+      color1: Colors.pink[50],
+      color2: Colors.pink[300])
 ];
 
 String sub_final;
