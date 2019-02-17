@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:techshiksha_student/LoginPage/loginPage.dart';
 // import 'package:techshiksha_student/screens/navigation_screen.dart';
 import 'student_screens/main_screen.dart';
 import 'student_screens/subjects.dart';
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget{
         home: MainScreen(),
         initialRoute: '.',
         routes: {
-          '.':(context) => MainScreen(),
+          '.':(context) => StartPage(),
+          '/home':(context)=> MainScreen(),
           '/science': (context) => SubjectViewModel(),
           '/navscreen':(context)=>NavigationScreen(),
           '/ncert': (context) => Ncert(),
