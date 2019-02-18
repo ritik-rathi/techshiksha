@@ -83,7 +83,7 @@ class MainScreenState extends State<MainScreen> {
               left: 20.0,
               child: new Text(
                 //TODO: Implement username after backend
-                'Rathi',
+                'Ritik Rathi',
                 style:new TextStyle(
                   fontSize: 40.0,
                   fontWeight: FontWeight.bold
@@ -101,7 +101,7 @@ class MainScreenState extends State<MainScreen> {
                 width: 300.0,
                 decoration: new BoxDecoration(
                   borderRadius: BorderRadius.circular(150.0),
-                  color: Colors.white10
+                  color: Colors.white12
                 ),
               ),
             ),
@@ -119,12 +119,18 @@ class MainScreenState extends State<MainScreen> {
             ),
             Positioned(
               top: 20.0,
-              right: 40.0,
-              child: new IconButton(
-                icon: Image.asset('assets/profile.png'),
-                onPressed: (){},
-                iconSize: 100.0,
-              ),
+              right: 20.0,
+              child: Container(
+                height: 100,
+                width: 100,
+                decoration: new BoxDecoration(
+                  borderRadius: BorderRadius.circular(150.0),
+                  image: DecorationImage(
+                    image: AssetImage('assets/ritik.jpeg'),
+                    fit:BoxFit.cover
+                  )
+                )
+              )
             )
           ],
         ),
