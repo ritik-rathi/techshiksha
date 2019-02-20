@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'attendance.dart';
-import 'testscores.dart';
 import 'subjects.dart';
-import 'package:techshiksha_student/bottom_navbar1.dart';
 import 'package:techshiksha_student/bottom_navbar2.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 String sub = '';
 Color color1, color2;
 
@@ -46,10 +43,15 @@ Color color1, color2;
 // }
 
 class MainScreen extends StatefulWidget {
+   const MainScreen({Key key, this.user}) : super(key: key);
+  final FirebaseUser user;
   MainScreenState createState() => MainScreenState();
 }
 
+
+
 class MainScreenState extends State<MainScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

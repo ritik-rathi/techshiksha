@@ -13,6 +13,10 @@ environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
 
 dependencies:
+  # cloud_firestore:
+  # firebase_auth: ^0.8.0+1
+  firebase_core: ^0.3.0+2
+  firebase_auth: ^0.8.0+1
   flutter:
     sdk: flutter
 
@@ -80,6 +84,7 @@ flutter:
     - assets/test_col.png
     - assets/logo.png
     - assets/ritik.jpeg
+    
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

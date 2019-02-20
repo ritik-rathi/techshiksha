@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'dart:math';
-import 'bubble_indicator.dart';
+
+// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:techshiksha_student/student_screens/main_screen.dart';
 
 // class Accounts {
 //   String account;
@@ -51,16 +53,39 @@ class _StartPageState extends State<StartPage>
 
   Color right = Colors.white;
   Color left = Colors.black;
-
+  String _logine;
+  String _loginp;
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   AnimationController fadeAnimationController;
   Animation fadeAnimation;
+  Future<void> login() async {
+    
+    final formState = _formkey.currentState;
+    if (formState.validate()) {
+      formState.save();
+      try {
+        FirebaseUser user = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+                email: _logine, password: _loginp);
+Navigator.of(context).pushNamed("/home");
+      } catch (e) {
+        print(e);
+        setState(() {
+          Text(
+            "Details are not Valid",
+            style: TextStyle(color: Colors.white, fontSize: 30.0),
+          );
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     fadeAnimationController.forward();
     return FadeTransition(
       opacity: fadeAnimation,
-          child: Scaffold(
+      child: Scaffold(
           body: NotificationListener<OverscrollIndicatorNotification>(
         child: SingleChildScrollView(
           // The main container or background that contains everything
@@ -76,55 +101,55 @@ class _StartPageState extends State<StartPage>
                     stops: [0.0, 1.0],
                     tileMode: TileMode.clamp,
                     colors: [Color(0xFFE1306C), Color(0xFF833ab4)])),
-                    // Column is used to display the rest of the widgets vertically
+            // Column is used to display the rest of the widgets vertically
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 // Our logo. can be tweaked
                 Padding(
-                  padding: const EdgeInsets.only(top: 75.0 , left: 20.0,right: 20.0),
+                  padding:
+                      const EdgeInsets.only(top: 75.0, left: 20.0, right: 20.0),
                   child: new Image(
                     width: 100.0,
                     height: 100.0,
                     fit: BoxFit.cover,
                     image: new AssetImage('assets/logo.png'),
                   ),
-                  ),
-                  //fucntion used for building the menu bar
-                  new Padding(
+                ),
+                //fucntion used for building the menu bar
+                new Padding(
                     padding: EdgeInsets.all(8.0),
-                    child:_buildMenuBar(context)
+                    child: _buildMenuBar(context)),
+                new Expanded(
+                  flex: 2,
+                  // below is a check that finds out which tab is active and sets the color accordingly
+                  child: PageView(
+                    onPageChanged: (i) {
+                      if (i == 0) {
+                        setState(() {
+                          right = Colors.white;
+                          left = Colors.black;
+                        });
+                      } else if (i == 1) {
+                        setState(() {
+                          right = Colors.black;
+                          left = Colors.white;
+                        });
+                      }
+                    },
+                    children: <Widget>[
+                      //the sign in widgets
+                      new ConstrainedBox(
+                        constraints: const BoxConstraints.expand(),
+                        child: _buildParentSignIn(context),
+                      ),
+                      new ConstrainedBox(
+                        constraints: const BoxConstraints.expand(),
+                        child: _buildTeacherSignIn(context),
+                      ),
+                    ],
                   ),
-                  new Expanded(
-                    flex:2,
-                    // below is a check that finds out which tab is active and sets the color accordingly
-                    child: PageView(
-                      onPageChanged: (i){
-                        if(i==0){
-                          setState(() {
-                           right = Colors.white;
-                           left = Colors.black;
-                          });
-                        }else if(i==1){
-                          setState(() {
-                           right = Colors.black;
-                           left = Colors.white; 
-                          });
-                        }
-                      },
-                      children: <Widget>[
-                        //the sign in widgets
-                        new ConstrainedBox(
-                          constraints: const BoxConstraints.expand(),
-                          child: _buildParentSignIn(context),
-                        ),
-                        new ConstrainedBox(
-                          constraints: const BoxConstraints.expand(),
-                          child: _buildTeacherSignIn(context),
-                        ),
-                      ],
-                    ),
-                  )
+                )
               ],
             ),
           ),
@@ -132,7 +157,8 @@ class _StartPageState extends State<StartPage>
       )),
     );
   }
-    @override
+
+  @override
   void dispose() {
     myFocusNodePassword.dispose();
     myFocusNodeEmail.dispose();
@@ -143,11 +169,10 @@ class _StartPageState extends State<StartPage>
 
   @override
   void initState() {
-    fadeAnimationController = new AnimationController(vsync: this , duration: Duration(seconds: 5));
+    fadeAnimationController =
+        new AnimationController(vsync: this, duration: Duration(seconds: 5));
     fadeAnimation = new CurvedAnimation(
-      curve: Curves.fastOutSlowIn,
-      parent: fadeAnimationController
-    );
+        curve: Curves.fastOutSlowIn, parent: fadeAnimationController);
     super.initState();
 
     SystemChrome.setPreferredOrientations([
@@ -156,13 +181,12 @@ class _StartPageState extends State<StartPage>
     ]);
 
     _pageController = PageController();
-}
+  }
 
 //****************************************************
-// Below function is just used as a debugger and to provide checks 
+// Below function is just used as a debugger and to provide checks
 // for the project. You can eliminate this after all the bugs are removed
 //****************************************************
-
 
 // void showInSnackBar(String value) {
 //     FocusScope.of(context).requestFocus(new FocusNode());
@@ -180,7 +204,7 @@ class _StartPageState extends State<StartPage>
 //       duration: Duration(seconds: 3),
 //     ));
 //   }
-
+  
   Widget _buildMenuBar(BuildContext context) {
     return Container(
       width: 300.0,
@@ -247,70 +271,88 @@ class _StartPageState extends State<StartPage>
                 child: Container(
                   width: 300.0,
                   height: 190.0,
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                        child: TextField(
-                          focusNode: myFocusNodeEmailLogin,
-                          controller: loginEmailController,
-                          keyboardType: TextInputType.emailAddress,
-                          style: TextStyle(
-                              fontFamily: "WorkSansSemiBold",
-                              fontSize: 16.0,
-                              color: Colors.black),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            icon: Icon(
-                              FontAwesomeIcons.envelope,
-                              color: Colors.black,
-                              size: 22.0,
+                  child: Form(
+                    key: _formkey,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                          child: TextFormField(
+                            focusNode: myFocusNodeEmailLogin,
+                            validator: (input) {
+                              if (input.length < 8)
+                                return "Make sure your password consists of atleast 8 letters";
+                            },
+                            onSaved: (input) {
+                              _logine = input;
+                            },
+                            keyboardType: TextInputType.emailAddress,
+                            style: TextStyle(
+                                fontFamily: "WorkSansSemiBold",
+                                fontSize: 16.0,
+                                color: Colors.black),
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              icon: Icon(
+                                FontAwesomeIcons.envelope,
+                                color: Colors.black,
+                                size: 22.0,
+                              ),
+                              hintText: "Email Address",
+                              hintStyle: TextStyle(
+                                  fontFamily: "WorkSansSemiBold",
+                                  fontSize: 17.0),
                             ),
-                            hintText: "Email Address",
-                            hintStyle: TextStyle(
-                                fontFamily: "WorkSansSemiBold", fontSize: 17.0),
                           ),
                         ),
-                      ),
-                      Container(
-                        width: 250.0,
-                        height: 1.0,
-                        color: Colors.grey[400],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                        child: TextField(
-                          focusNode: myFocusNodePasswordLogin,
-                          controller: loginPasswordController,
-                          obscureText: _obscureTextLogin,
-                          style: TextStyle(
-                              fontFamily: "WorkSansSemiBold",
-                              fontSize: 16.0,
-                              color: Colors.black),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            icon: Icon(
-                              FontAwesomeIcons.lock,
-                              size: 22.0,
-                              color: Colors.black,
-                            ),
-                            hintText: "Password",
-                            hintStyle: TextStyle(
-                                fontFamily: "WorkSansSemiBold", fontSize: 17.0),
-                            suffixIcon: GestureDetector(
-                              onTap: _toggleLogin,
-                              child: Icon(
-                                FontAwesomeIcons.eye,
-                                size: 15.0,
-                                color: Colors.black,
+                        // Container(
+                        //   width: 250.0,
+                        //   height: 1.0,
+                        //   color: Colors.grey[400],
+                        // ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                            child: TextFormField(
+                              focusNode: myFocusNodePasswordLogin,
+                              validator: (input) {
+                                if (input.length < 4)
+                                  return "Make sure your password consists of atleast 8 letters";
+                              },
+                              onSaved: (input) {
+                                _loginp = input;
+                              },
+                              obscureText: _obscureTextLogin,
+                              style: TextStyle(
+                                  fontFamily: "WorkSansSemiBold",
+                                  fontSize: 16.0,
+                                  color: Colors.black),
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                icon: Icon(
+                                  FontAwesomeIcons.lock,
+                                  size: 22.0,
+                                  color: Colors.black,
+                                ),
+                                hintText: "Password",
+                                hintStyle: TextStyle(
+                                    fontFamily: "WorkSansSemiBold",
+                                    fontSize: 17.0),
+                                suffixIcon: GestureDetector(
+                                  onTap: _toggleLogin,
+                                  child: Icon(
+                                    FontAwesomeIcons.eye,
+                                    size: 15.0,
+                                    color: Colors.black,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                          
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -331,10 +373,7 @@ class _StartPageState extends State<StartPage>
                     ),
                   ],
                   gradient: new LinearGradient(
-                      colors: [
-                        Color(0xFF833ab4),
-                        Color(0xFFE1306C)
-                      ],
+                      colors: [Color(0xFF833ab4), Color(0xFFE1306C)],
                       begin: const FractionalOffset(0.2, 0.2),
                       end: const FractionalOffset(1.0, 1.0),
                       stops: [0.0, 1.0],
@@ -356,16 +395,17 @@ class _StartPageState extends State<StartPage>
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/home');
-                    }// showInSnackBar("Login button pressed")),
+                      login();
+                      // Navigator.pushNamed(context, '/home');
+                    } // showInSnackBar("Login button pressed")),
+                    ),
               ),
-              ),
-              ],
+            ],
           ),
           Padding(
             padding: EdgeInsets.only(top: 10.0),
             child: FlatButton(
-              //TODO: Forgot Password Handler
+                //TODO: Forgot Password Handler
                 onPressed: () {},
                 child: Text(
                   "Forgot Password?",
@@ -430,9 +470,7 @@ class _StartPageState extends State<StartPage>
               Padding(
                 padding: EdgeInsets.only(top: 10.0, right: 40.0),
                 child: GestureDetector(
-                  onTap: () {
-                    
-                  },
+                  onTap: () {},
                   child: Container(
                     padding: const EdgeInsets.all(15.0),
                     decoration: new BoxDecoration(
@@ -449,9 +487,7 @@ class _StartPageState extends State<StartPage>
               Padding(
                 padding: EdgeInsets.only(top: 10.0),
                 child: GestureDetector(
-                  onTap: () {
-
-                  },
+                  onTap: () {},
                   child: Container(
                     padding: const EdgeInsets.all(15.0),
                     decoration: new BoxDecoration(
@@ -481,6 +517,7 @@ class _StartPageState extends State<StartPage>
             alignment: Alignment.topCenter,
             overflow: Overflow.visible,
             children: <Widget>[
+              //new
               Card(
                 elevation: 2.0,
                 color: Colors.white,
@@ -620,32 +657,29 @@ class _StartPageState extends State<StartPage>
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 340.0),
-                decoration: new BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                      color: Color(0xFFE1306C),
-                      offset: Offset(1.0, 6.0),
-                      blurRadius: 20.0,
-                    ),
-                    BoxShadow(
-                      color: Color(0xFF833ab4),
-                      offset: Offset(1.0, 6.0),
-                      blurRadius: 20.0,
-                    ),
-                  ],
-                  gradient: new LinearGradient(
-                      colors: [
-                        Color(0xFF833ab4),
-                        Color(0xFFE1306C)
-                      ],
-                      begin: const FractionalOffset(0.2, 0.2),
-                      end: const FractionalOffset(1.0, 1.0),
-                      stops: [0.0, 1.0],
-                      tileMode: TileMode.clamp),
-                ),
-                child: MaterialButton(
+                  margin: EdgeInsets.only(top: 340.0),
+                  decoration: new BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        color: Color(0xFFE1306C),
+                        offset: Offset(1.0, 6.0),
+                        blurRadius: 20.0,
+                      ),
+                      BoxShadow(
+                        color: Color(0xFF833ab4),
+                        offset: Offset(1.0, 6.0),
+                        blurRadius: 20.0,
+                      ),
+                    ],
+                    gradient: new LinearGradient(
+                        colors: [Color(0xFF833ab4), Color(0xFFE1306C)],
+                        begin: const FractionalOffset(0.2, 0.2),
+                        end: const FractionalOffset(1.0, 1.0),
+                        stops: [0.0, 1.0],
+                        tileMode: TileMode.clamp),
+                  ),
+                  child: MaterialButton(
                     highlightColor: Colors.transparent,
                     splashColor: Color(0xFF833ab4),
                     //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
@@ -660,11 +694,10 @@ class _StartPageState extends State<StartPage>
                             fontFamily: "WorkSansBold"),
                       ),
                     ),
-                    onPressed: (){
+                    onPressed: () {
                       Navigator.pushNamed(context, 'home');
                     },
-                )
-              ),
+                  )),
             ],
           ),
         ],
@@ -698,5 +731,5 @@ class _StartPageState extends State<StartPage>
     setState(() {
       _obscureTextSignupConfirm = !_obscureTextSignupConfirm;
     });
-}
+  }
 }
