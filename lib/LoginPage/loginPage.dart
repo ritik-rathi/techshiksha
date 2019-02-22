@@ -55,19 +55,19 @@ class _StartPageState extends State<StartPage>
   Color left = Colors.black;
   String _logine;
   String _loginp;
+  String _sname ,_semail,_psw,_cpsw,_enrollment;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _signkey = GlobalKey<FormState>();
   AnimationController fadeAnimationController;
   Animation fadeAnimation;
   Future<void> login() async {
-    
     final formState = _formkey.currentState;
     if (formState.validate()) {
       formState.save();
       try {
         FirebaseUser user = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(
-                email: _logine, password: _loginp);
-Navigator.of(context).pushNamed("/home");
+            .signInWithEmailAndPassword(email: _logine, password: _loginp);
+        Navigator.of(context).pushNamed("/home");
       } catch (e) {
         print(e);
         setState(() {
@@ -80,6 +80,30 @@ Navigator.of(context).pushNamed("/home");
     }
   }
 
+
+Future<void> signup() async {
+    final formState = _signkey.currentState;
+
+    if (formState.validate()) {
+      print(_semail);
+      print(_psw);
+      print(_cpsw);
+      if(_cpsw==_psw)
+      {
+        print("working");
+      // Navigator.of(context).pushNamed("/welcome");
+      formState.save();
+
+      try {
+        FirebaseUser user = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: _semail, password: _psw);
+        Navigator.push(context,MaterialPageRoute(builder: (context)=> MainScreen()));
+      } catch (e) {
+        print(e);
+      }
+    }
+    }
+  }
   @override
   Widget build(BuildContext context) {
     fadeAnimationController.forward();
@@ -204,7 +228,7 @@ Navigator.of(context).pushNamed("/home");
 //       duration: Duration(seconds: 3),
 //     ));
 //   }
-  
+
   Widget _buildMenuBar(BuildContext context) {
     return Container(
       width: 300.0,
@@ -314,42 +338,41 @@ Navigator.of(context).pushNamed("/home");
                         Padding(
                           padding: EdgeInsets.only(
                               top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                            child: TextFormField(
-                              focusNode: myFocusNodePasswordLogin,
-                              validator: (input) {
-                                if (input.length < 4)
-                                  return "Make sure your password consists of atleast 8 letters";
-                              },
-                              onSaved: (input) {
-                                _loginp = input;
-                              },
-                              obscureText: _obscureTextLogin,
-                              style: TextStyle(
+                          child: TextFormField(
+                            focusNode: myFocusNodePasswordLogin,
+                            validator: (input) {
+                              if (input.length < 4)
+                                return "Make sure your password consists of atleast 8 letters";
+                            },
+                            onSaved: (input) {
+                              _loginp = input;
+                            },
+                            obscureText: _obscureTextLogin,
+                            style: TextStyle(
+                                fontFamily: "WorkSansSemiBold",
+                                fontSize: 16.0,
+                                color: Colors.black),
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              icon: Icon(
+                                FontAwesomeIcons.lock,
+                                size: 22.0,
+                                color: Colors.black,
+                              ),
+                              hintText: "Password",
+                              hintStyle: TextStyle(
                                   fontFamily: "WorkSansSemiBold",
-                                  fontSize: 16.0,
-                                  color: Colors.black),
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                icon: Icon(
-                                  FontAwesomeIcons.lock,
-                                  size: 22.0,
+                                  fontSize: 17.0),
+                              suffixIcon: GestureDetector(
+                                onTap: _toggleLogin,
+                                child: Icon(
+                                  FontAwesomeIcons.eye,
+                                  size: 15.0,
                                   color: Colors.black,
-                                ),
-                                hintText: "Password",
-                                hintStyle: TextStyle(
-                                    fontFamily: "WorkSansSemiBold",
-                                    fontSize: 17.0),
-                                suffixIcon: GestureDetector(
-                                  onTap: _toggleLogin,
-                                  child: Icon(
-                                    FontAwesomeIcons.eye,
-                                    size: 15.0,
-                                    color: Colors.black,
-                                  ),
                                 ),
                               ),
                             ),
-                          
+                          ),
                         ),
                       ],
                     ),
@@ -509,198 +532,277 @@ Navigator.of(context).pushNamed("/home");
   }
 
   Widget _buildTeacherSignIn(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: 23.0),
-      child: Column(
-        children: <Widget>[
-          Stack(
-            alignment: Alignment.topCenter,
-            overflow: Overflow.visible,
-            children: <Widget>[
-              //new
-              Card(
-                elevation: 2.0,
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: Container(
-                  width: 300.0,
-                  height: 360.0,
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                        child: TextField(
-                          focusNode: myFocusNodeName,
-                          controller: signupNameController,
-                          keyboardType: TextInputType.text,
-                          textCapitalization: TextCapitalization.words,
-                          style: TextStyle(
-                              fontFamily: "WorkSansSemiBold",
-                              fontSize: 16.0,
-                              color: Colors.black),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            icon: Icon(
-                              FontAwesomeIcons.user,
-                              color: Colors.black,
-                            ),
-                            hintText: "Student Name",
-                            hintStyle: TextStyle(
-                                fontFamily: "WorkSansSemiBold", fontSize: 16.0),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 250.0,
-                        height: 1.0,
-                        color: Colors.grey[400],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                        child: TextField(
-                          focusNode: myFocusNodeEmail,
-                          controller: signupEmailController,
-                          keyboardType: TextInputType.emailAddress,
-                          style: TextStyle(
-                              fontFamily: "WorkSansSemiBold",
-                              fontSize: 16.0,
-                              color: Colors.black),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            icon: Icon(
-                              FontAwesomeIcons.envelope,
-                              color: Colors.black,
-                            ),
-                            hintText: "Email Address",
-                            hintStyle: TextStyle(
-                                fontFamily: "WorkSansSemiBold", fontSize: 16.0),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 250.0,
-                        height: 1.0,
-                        color: Colors.grey[400],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                        child: TextField(
-                          focusNode: myFocusNodePassword,
-                          controller: signupPasswordController,
-                          obscureText: _obscureTextSignup,
-                          style: TextStyle(
-                              fontFamily: "WorkSansSemiBold",
-                              fontSize: 16.0,
-                              color: Colors.black),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            icon: Icon(
-                              FontAwesomeIcons.lock,
-                              color: Colors.black,
-                            ),
-                            hintText: "Password",
-                            hintStyle: TextStyle(
-                                fontFamily: "WorkSansSemiBold", fontSize: 16.0),
-                            suffixIcon: GestureDetector(
-                              onTap: _toggleSignup,
-                              child: Icon(
-                                FontAwesomeIcons.eye,
-                                size: 15.0,
+    return Form(
+      key: _signkey,
+      child: Container(
+        padding: EdgeInsets.only(top: 23.0),
+        child: Column(
+          children: <Widget>[
+            Stack(
+              alignment: Alignment.topCenter,
+              overflow: Overflow.visible,
+              children: <Widget>[
+                //new
+                Card(
+                  elevation: 2.0,
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Container(
+                    width: 300.0,
+                    height: 460.0,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                          child: TextFormField(
+                            validator: (input) {
+                              if (input.length < 8)
+                                return "Make sure your password consists of atleast 8 letters";
+                            },
+                            autofocus: false,
+                            onSaved: (input) {
+                              _sname = input;
+                            },
+                            focusNode: myFocusNodeName,
+                            controller: signupNameController,
+                            keyboardType: TextInputType.text,
+                            textCapitalization: TextCapitalization.words,
+                            style: TextStyle(
+                                fontFamily: "WorkSansSemiBold",
+                                fontSize: 16.0,
+                                color: Colors.black),
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              icon: Icon(
+                                FontAwesomeIcons.user,
                                 color: Colors.black,
+                              ),
+                              hintText: "Student Name",
+                              hintStyle: TextStyle(
+                                  fontFamily: "WorkSansSemiBold",
+                                  fontSize: 16.0),
+                            ),
+                          ),
+                        ),
+                        
+                        Container(
+                          width: 250.0,
+                          height: 1.0,
+                          color: Colors.grey[400],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                          child: TextFormField(
+                            validator: (input) {
+                              if (input.length < 8)
+                                return "Make sure your password consists of atleast 8 letters";
+                            },
+                            autofocus: false,
+                            onSaved: (input) {
+                              _enrollment = input;
+                            },
+                            focusNode: myFocusNodeEmail,
+                            controller: signupEmailController,
+                            // keyboardType: TextInputType.emailAddress,
+                            style: TextStyle(
+                                fontFamily: "WorkSansSemiBold",
+                                fontSize: 16.0,
+                                color: Colors.black),
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              icon: Icon(
+                                FontAwesomeIcons.arrowRight,
+                                color: Colors.black,
+                              ),
+                              hintText: "Admission No.",
+                              hintStyle: TextStyle(
+                                  fontFamily: "WorkSansSemiBold",
+                                  fontSize: 16.0),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 250.0,
+                          height: 1.0,
+                          color: Colors.grey[400],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                          child: TextFormField(
+                            validator: (input) {
+                              if (input.length < 8)
+                                return "Make sure your password consists of atleast 8 letters";
+                            },
+                            autofocus: false,
+                            onSaved: (input) {
+                              _semail = input;
+                            },
+                            focusNode: myFocusNodeEmail,
+                            controller: signupEmailController,
+                            keyboardType: TextInputType.emailAddress,
+                            style: TextStyle(
+                                fontFamily: "WorkSansSemiBold",
+                                fontSize: 16.0,
+                                color: Colors.black),
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              icon: Icon(
+                                FontAwesomeIcons.envelope,
+                                color: Colors.black,
+                              ),
+                              hintText: "Email Address",
+                              hintStyle: TextStyle(
+                                  fontFamily: "WorkSansSemiBold",
+                                  fontSize: 16.0),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 250.0,
+                          height: 1.0,
+                          color: Colors.grey[400],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                          child: TextFormField(
+                            validator: (input) {
+                              if (input.length < 8)
+                                return "Make sure your password consists of atleast 8 letters";
+                            },
+                            autofocus: false,
+                            onSaved: (input) {
+                              _psw = input;
+                            },
+                            focusNode: myFocusNodePassword,
+                            controller: signupPasswordController,
+                            obscureText: _obscureTextSignup,
+                            style: TextStyle(
+                                fontFamily: "WorkSansSemiBold",
+                                fontSize: 16.0,
+                                color: Colors.black),
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              icon: Icon(
+                                FontAwesomeIcons.lock,
+                                color: Colors.black,
+                              ),
+                              hintText: "Password",
+                              hintStyle: TextStyle(
+                                  fontFamily: "WorkSansSemiBold",
+                                  fontSize: 16.0),
+                              suffixIcon: GestureDetector(
+                                onTap: _toggleSignup,
+                                child: Icon(
+                                  FontAwesomeIcons.eye,
+                                  size: 15.0,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        width: 250.0,
-                        height: 1.0,
-                        color: Colors.grey[400],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                        child: TextField(
-                          controller: signupConfirmPasswordController,
-                          obscureText: _obscureTextSignupConfirm,
-                          style: TextStyle(
-                              fontFamily: "WorkSansSemiBold",
-                              fontSize: 16.0,
-                              color: Colors.black),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            icon: Icon(
-                              FontAwesomeIcons.lock,
-                              color: Colors.black,
-                            ),
-                            hintText: "Confirmation",
-                            hintStyle: TextStyle(
-                                fontFamily: "WorkSansSemiBold", fontSize: 16.0),
-                            suffixIcon: GestureDetector(
-                              onTap: _toggleSignupConfirm,
-                              child: Icon(
-                                FontAwesomeIcons.eye,
-                                size: 15.0,
+                         
+                        Container(
+                          width: 250.0,
+                          height: 1.0,
+                          color: Colors.grey[400],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                          child: TextFormField(
+                            validator: (input) {
+                              if (input.length < 8)
+                                return "Make sure your password consists of atleast 8 letters";
+                            },
+                            autofocus: false,
+                            onSaved: (input) {
+                              _cpsw = input;
+                            },
+                            controller: signupConfirmPasswordController,
+                            obscureText: _obscureTextSignupConfirm,
+                            style: TextStyle(
+                                fontFamily: "WorkSansSemiBold",
+                                fontSize: 16.0,
+                                color: Colors.black),
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              icon: Icon(
+                                FontAwesomeIcons.lock,
                                 color: Colors.black,
+                              ),
+                              hintText: "Confirmation",
+                              hintStyle: TextStyle(
+                                  fontFamily: "WorkSansSemiBold",
+                                  fontSize: 16.0),
+                              suffixIcon: GestureDetector(
+                                onTap: _toggleSignupConfirm,
+                                child: Icon(
+                                  FontAwesomeIcons.eye,
+                                  size: 15.0,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                  margin: EdgeInsets.only(top: 340.0),
-                  decoration: new BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                        color: Color(0xFFE1306C),
-                        offset: Offset(1.0, 6.0),
-                        blurRadius: 20.0,
-                      ),
-                      BoxShadow(
-                        color: Color(0xFF833ab4),
-                        offset: Offset(1.0, 6.0),
-                        blurRadius: 20.0,
-                      ),
-                    ],
-                    gradient: new LinearGradient(
-                        colors: [Color(0xFF833ab4), Color(0xFFE1306C)],
-                        begin: const FractionalOffset(0.2, 0.2),
-                        end: const FractionalOffset(1.0, 1.0),
-                        stops: [0.0, 1.0],
-                        tileMode: TileMode.clamp),
-                  ),
-                  child: MaterialButton(
-                    highlightColor: Colors.transparent,
-                    splashColor: Color(0xFF833ab4),
-                    //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 42.0),
-                      child: Text(
-                        "SIGN UP",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25.0,
-                            fontFamily: "WorkSansBold"),
-                      ),
+                      ],
                     ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'home');
-                    },
-                  )),
-            ],
-          ),
-        ],
+                  ),
+                ),
+                Container(
+                    margin: EdgeInsets.only(top: 440.0),
+                    decoration: new BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: Color(0xFFE1306C),
+                          offset: Offset(1.0, 6.0),
+                          blurRadius: 20.0,
+                        ),
+                        BoxShadow(
+                          color: Color(0xFF833ab4),
+                          offset: Offset(1.0, 6.0),
+                          blurRadius: 20.0,
+                        ),
+                      ],
+                      gradient: new LinearGradient(
+                          colors: [Color(0xFF833ab4), Color(0xFFE1306C)],
+                          begin: const FractionalOffset(0.2, 0.2),
+                          end: const FractionalOffset(1.0, 1.0),
+                          stops: [0.0, 1.0],
+                          tileMode: TileMode.clamp),
+                    ),
+                    child: MaterialButton(
+                      highlightColor: Colors.transparent,
+                      splashColor: Color(0xFF833ab4),
+                      //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 42.0),
+                        child: Text(
+                          "SIGN UP",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25.0,
+                              fontFamily: "WorkSansBold"),
+                        ),
+                      ),
+                      onPressed: () {
+                        signup();
+                        // Navigator.pushNamed(context, '/home');
+                      },
+                    )),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
