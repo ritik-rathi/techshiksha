@@ -180,6 +180,7 @@ class _FlipBarElement extends StatelessWidget {
       ),
       onTapped: () {
         onTapped(index);
+        Navigator.pushNamed(context, '/$text');
       },
       height: appBarHeight,
     );

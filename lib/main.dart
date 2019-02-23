@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:techshiksha_student/LoginPage/loginPage.dart';
+import 'package:techshiksha_student/student_screens/attendance.dart';
+import 'package:techshiksha_student/student_screens/testscores.dart';
 // import 'package:techshiksha_student/screens/navigation_screen.dart';
 import 'student_screens/main_screen.dart';
 import 'student_screens/subjects.dart';
@@ -23,6 +25,9 @@ class MyApp extends StatelessWidget{
           '/science': (context) => SubjectViewModel(),
           '/navscreen':(context)=>NavigationScreen(),
           '/ncert': (context) => Ncert(),
+          '/Profile':(context)=> Attendance(),
+          '/Attendance':(context)=> Attendance(),
+          '/Scores':(context)=> TestScore()
           // '/drawer': (context) => Drawer1()
         },
     );
