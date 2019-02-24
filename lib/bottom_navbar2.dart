@@ -95,6 +95,7 @@ class _FlipBoxBarState extends State<FlipBoxBar> with TickerProviderStateMixin {
     indexChosen = index;
     _controllers[indexChosen].forward();
     widget.onIndexChanged(index);
+    Navigator.pushNamed(context, '/Scores');
   }
 }
 
