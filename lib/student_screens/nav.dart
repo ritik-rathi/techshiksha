@@ -54,6 +54,8 @@ class NavigationScreen extends StatelessWidget {
     return Scaffold(
         resizeToAvoidBottomPadding: true,
         body: Container(
+          width: MediaQuery.of(context).size.width,
+          //height: Size.height,
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   colors: [color11, color22],
