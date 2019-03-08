@@ -23,8 +23,8 @@ final subjects = [
   new Subjects(
       sub: 'Maths',
       imgPath: 'assets/math_icon.png',
-      color1: Colors.yellow[50],
-      color2: Colors.yellow[300]),
+      color1: Colors.yellow[100],
+      color2: Colors.yellow[400]),
   new Subjects(
       sub: 'History',
       imgPath: 'assets/his_col.jpg',

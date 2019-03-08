@@ -27,8 +27,9 @@ class MyApp extends StatelessWidget{
           '/ncert': (context) => Ncert(),
           '/Profile':(context)=> Attendance(),
           '/Attendance':(context)=> Attendance(),
-          '/Scores':(context)=> TestScore()
+          '/Scores':(context)=> TestScore(),
           // '/drawer': (context) => Drawer1()
+          '/SubScore' : (context) => Scores()
         },
     );
   }

@@ -14,7 +14,18 @@ Color attendance() {
     return Colors.grey;
 }
 
-class Attendance extends StatelessWidget {
+class Attendance extends StatefulWidget {
+  @override
+  _AttendanceState createState() => _AttendanceState();
+}
+
+class _AttendanceState extends State<Attendance> {
+  @override
+  void setState(fn) {
+    // TODO: implement setState
+    super.setState(fn);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,15 +33,12 @@ class Attendance extends StatelessWidget {
         title: Text('Attendance'),
       ),
       body: Container(
-        child:
-          CalendarCarousel(
-            todayButtonColor: attendance(),
-            todayBorderColor: Colors.black,
-            daysHaveCircularBorder: true,
-          ),
-          // Text('Number of working days: $wor'),
-          // Text('Number of days present: $pr')
-        
+        child: CalendarCarousel(
+          todayButtonColor: attendance(),
+          todayBorderColor: Colors.black,
+          daysHaveCircularBorder: true,
+        ),
+      
       ),
     );
   }
