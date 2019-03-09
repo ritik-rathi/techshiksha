@@ -64,40 +64,72 @@ class _StartPageState extends State<StartPage>
     if (formState.validate()) {
       formState.save();
       try {
-        print("gihjij");
-      var  email= something(context);
-print(email);
-        FirebaseUser user = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: _loginemail, password: _loginp);
-        // Navigator.pushReplacement(MainScreen(user: user);
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => MainScreen(user: user)));
+        print("all done 1");
+        var email;
+        var name;
+        print(_logine);
+        print(_loginp);
+        var documnet =
+            Firestore.instance.collection('/students').document(_logine);
+        documnet.get().then((snp) {
+          var data = snp.data;
+          name = data['name'];
+          
+          email = data['email'];
+          print(email);
+        });
+        Future.delayed(const Duration(seconds: 8), () {
+          setState(() {
+            print(email);
+            log(email, name);
+          });
+        });
       } catch (e) {
         print(e);
-        setState(() {
-          Text(
-            "Details are not Valid",
-            style: TextStyle(color: Colors.white, fontSize: 30.0),
-          );
-        });
       }
     }
   }
 
+  Future log(mail, name) async {
+print("object");
+    try {
+      FirebaseUser user = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: mail, password: _loginp);
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => MainScreen(user: name)));
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Widget checking() {
+    return new StreamBuilder(
+        stream: Firestore.instance
+            .collection('/students')
+            .document('AB157945')
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return new Text("Loading");
+          }
+          print("object");
+          var userDocument = snapshot.data;
+          return new Text(userDocument["name"]);
+        });
+  }
+
   Widget something(BuildContext build) {
     print("object");
-     StreamBuilder(
+    StreamBuilder(
       stream: Firestore.instance
           .collection('/students')
           .document(_logine)
           .snapshots(),
       builder: (context, snapshot) {
-        if(!snapshot.hasData)
-        return Text("Some error occured");
+        if (!snapshot.hasData) return Text("Some error occured");
         print("cool");
         var userdata = snapshot.data;
-return Text("jj");
- Text(userdata['email']);
+        return Text(userdata['email']);
         // print('object');
         // _loginemail = userdata['email'];
       },
@@ -119,13 +151,17 @@ return Text("jj");
         formState.save();
 
         try {
-        var store =   Firestore.instance.collection('/students').document(_enrollment).setData(data);
-        print(store);
-          // something(context);
+          Firestore.instance
+              .collection('/students')
+              .document(_enrollment)
+              .setData(data);
+          something(context);
           FirebaseUser user = await FirebaseAuth.instance
               .createUserWithEmailAndPassword(email: _semail, password: _psw);
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => MainScreen(user: user)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => MainScreen(user: "ankit")));
         } catch (e) {
           // print(e);
         }

@@ -44,7 +44,8 @@ Color color1, color2;
 
 class MainScreen extends StatefulWidget {
    const MainScreen({Key key, this.user}) : super(key: key);
-  final FirebaseUser user;
+  // final FirebaseUser user;
+  final String user;
   MainScreenState createState() => MainScreenState();
 }
 
@@ -54,7 +55,8 @@ class MainScreenState extends State<MainScreen> {
   
   @override
   Widget build(BuildContext context) {
-    var em = '${widget.user.email}';
+    // var em = '${'name'}';
+    var em="${widget.user}";
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 150),
