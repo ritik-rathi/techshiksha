@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:techshiksha_student/LoginPage/loginPage.dart';
-// import 'package:techshiksha_student/screens/navigation_screen.dart';
 import 'student_screens/main_screen.dart';
 import 'student_screens/subjects.dart';
 import 'student_screens/nav.dart';

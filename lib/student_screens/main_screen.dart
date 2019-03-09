@@ -54,6 +54,7 @@ class MainScreenState extends State<MainScreen> {
   
   @override
   Widget build(BuildContext context) {
+    var em = '${widget.user.email}';
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 150),
@@ -85,7 +86,7 @@ class MainScreenState extends State<MainScreen> {
               left: 20.0,
               child: new Text(
                 //TODO: Implement username after backend
-                'Ritik Rathi',
+                em,
                 style:new TextStyle(
                   fontSize: 40.0,
                   fontWeight: FontWeight.bold

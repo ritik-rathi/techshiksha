@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:techshiksha_student/student_screens/main_screen.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:async';
 // class Accounts {
 //   String account;
 //   Color color1, color2;
@@ -53,9 +52,9 @@ class _StartPageState extends State<StartPage>
 
   Color right = Colors.white;
   Color left = Colors.black;
-  String _logine;
+  String _logine, _loginemail;
   String _loginp;
-  String _sname ,_semail,_psw,_cpsw,_enrollment;
+  String _sname, _semail, _psw, _cpsw, _enrollment;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final GlobalKey<FormState> _signkey = GlobalKey<FormState>();
   AnimationController fadeAnimationController;
@@ -65,9 +64,14 @@ class _StartPageState extends State<StartPage>
     if (formState.validate()) {
       formState.save();
       try {
+        print("gihjij");
+      var  email= something(context);
+print(email);
         FirebaseUser user = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: _logine, password: _loginp);
-        Navigator.of(context).pushNamed("/home");
+            .signInWithEmailAndPassword(email: _loginemail, password: _loginp);
+        // Navigator.pushReplacement(MainScreen(user: user);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => MainScreen(user: user)));
       } catch (e) {
         print(e);
         setState(() {
@@ -80,30 +84,54 @@ class _StartPageState extends State<StartPage>
     }
   }
 
+  Widget something(BuildContext build) {
+    // print("object");
+     StreamBuilder(
+      stream: Firestore.instance
+          .collection('/students')
+          .document(_logine)
+          .snapshots(),
+      builder: (context, snapshot) {
+        if(!snapshot.hasData)
+        return Text("jain2anki@gmail.com");
+        print("hhh");
+        var userdata = snapshot.data;
+return Text("jj");
+ Text(userdata['email']);
+        // print('object');
+        // _loginemail = userdata['email'];
+      },
+    );
+  }
 
-Future<void> signup() async {
+  Future<void> signup(data) async {
     final formState = _signkey.currentState;
-
+// print(data._semail);
+    String s = "ankit";
     if (formState.validate()) {
       print(_semail);
       print(_psw);
       print(_cpsw);
-      if(_cpsw==_psw)
-      {
+      print(_enrollment);
+      if (_cpsw == _psw) {
         print("working");
-      // Navigator.of(context).pushNamed("/welcome");
-      formState.save();
+        // Navigator.of(context).pushNamed("/welcome");
+        formState.save();
 
-      try {
-        FirebaseUser user = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: _semail, password: _psw);
-        Navigator.push(context,MaterialPageRoute(builder: (context)=> MainScreen()));
-      } catch (e) {
-        print(e);
+        try {
+          // Firestore.instance.collection('/students').document(_enrollment).setData(data);
+          something(context);
+          FirebaseUser user = await FirebaseAuth.instance
+              .createUserWithEmailAndPassword(email: _semail, password: _psw);
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => MainScreen(user: user)));
+        } catch (e) {
+          // print(e);
+        }
       }
     }
-    }
   }
+
   @override
   Widget build(BuildContext context) {
     fadeAnimationController.forward();
@@ -311,7 +339,7 @@ Future<void> signup() async {
                             onSaved: (input) {
                               _logine = input;
                             },
-                            keyboardType: TextInputType.emailAddress,
+                            // keyboardType: TextInputType.emailAddress,
                             style: TextStyle(
                                 fontFamily: "WorkSansSemiBold",
                                 fontSize: 16.0,
@@ -323,7 +351,7 @@ Future<void> signup() async {
                                 color: Colors.black,
                                 size: 22.0,
                               ),
-                              hintText: "Email Address",
+                              hintText: "Admission no.",
                               hintStyle: TextStyle(
                                   fontFamily: "WorkSansSemiBold",
                                   fontSize: 17.0),
@@ -566,8 +594,6 @@ Future<void> signup() async {
                             onSaved: (input) {
                               _sname = input;
                             },
-                            focusNode: myFocusNodeName,
-                            controller: signupNameController,
                             keyboardType: TextInputType.text,
                             textCapitalization: TextCapitalization.words,
                             style: TextStyle(
@@ -587,7 +613,6 @@ Future<void> signup() async {
                             ),
                           ),
                         ),
-                        
                         Container(
                           width: 250.0,
                           height: 1.0,
@@ -605,9 +630,6 @@ Future<void> signup() async {
                             onSaved: (input) {
                               _enrollment = input;
                             },
-                            focusNode: myFocusNodeEmail,
-                            controller: signupEmailController,
-                            // keyboardType: TextInputType.emailAddress,
                             style: TextStyle(
                                 fontFamily: "WorkSansSemiBold",
                                 fontSize: 16.0,
@@ -642,8 +664,6 @@ Future<void> signup() async {
                             onSaved: (input) {
                               _semail = input;
                             },
-                            focusNode: myFocusNodeEmail,
-                            controller: signupEmailController,
                             keyboardType: TextInputType.emailAddress,
                             style: TextStyle(
                                 fontFamily: "WorkSansSemiBold",
@@ -679,8 +699,6 @@ Future<void> signup() async {
                             onSaved: (input) {
                               _psw = input;
                             },
-                            focusNode: myFocusNodePassword,
-                            controller: signupPasswordController,
                             obscureText: _obscureTextSignup,
                             style: TextStyle(
                                 fontFamily: "WorkSansSemiBold",
@@ -707,7 +725,6 @@ Future<void> signup() async {
                             ),
                           ),
                         ),
-                         
                         Container(
                           width: 250.0,
                           height: 1.0,
@@ -725,7 +742,6 @@ Future<void> signup() async {
                             onSaved: (input) {
                               _cpsw = input;
                             },
-                            controller: signupConfirmPasswordController,
                             obscureText: _obscureTextSignupConfirm,
                             style: TextStyle(
                                 fontFamily: "WorkSansSemiBold",
@@ -795,8 +811,13 @@ Future<void> signup() async {
                         ),
                       ),
                       onPressed: () {
-                        signup();
-                        // Navigator.pushNamed(context, '/home');
+                        Map<String, dynamic> data = <String, dynamic>{
+                          'name': _sname,
+                          'admission no': _enrollment,
+                          'email': _semail,
+                          'password': _psw
+                        };
+                        signup(data);
                       },
                     )),
               ],
