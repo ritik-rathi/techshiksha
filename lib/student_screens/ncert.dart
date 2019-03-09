@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'subjects.dart';
-//import 'package:flutter_pdf_viewer/flutter_pdf_viewer.dart';
+import 'package:flutter_pdf_viewer/flutter_pdf_viewer.dart';
 
 class Ncert extends StatelessWidget {
   @override
@@ -43,7 +43,7 @@ class Ncert extends StatelessWidget {
           ),
           FlatButton(
             onPressed: () {
-              
+              PdfViewer.loadAsset('assets/science_book.pdf');
             },
             child: Text(
               '1. Food: Where does it come from?',
