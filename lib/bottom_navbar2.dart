@@ -89,12 +89,19 @@ class _FlipBoxBarState extends State<FlipBoxBar> with TickerProviderStateMixin {
     );
   }
 
+  final List path = [
+    '/Profile',
+    '/Attendance',
+    '/Scores'
+  ];
+
   /// When tapped, reverse the last chosen index and flip the chosen one.
   void _onTapped(int index) {
     _controllers[indexChosen].reverse();
     indexChosen = index;
     _controllers[indexChosen].forward();
     widget.onIndexChanged(index);
+    Navigator.pushNamed(context, path[index]);
   }
 }
 
@@ -111,6 +118,8 @@ class FlipBarItem {
   /// The color of the top side (Towards the user when selected).
   final Color backColor;
 
+  //final String path;
+
  // final Widget container;
 
   FlipBarItem({
@@ -118,6 +127,7 @@ class FlipBarItem {
     @required this.text,
     this.frontColor = Colors.blueAccent,
     this.backColor = Colors.blue,
+    //this.path
   
   });
 }
@@ -145,11 +155,13 @@ class _FlipBarElement extends StatelessWidget {
   /// The index of the box.
   final index;
 
+  //final String path;
+
   /// Passing down widget from upper widget
   final double appBarHeight;
 
   _FlipBarElement(this.icon, this.text, this.frontColor, this.backColor,
-      this.controller, this.onTapped, this.index, this.appBarHeight);
+      this.controller, this.onTapped, this.index, this.appBarHeight, /*this.path*/);
 
   @override
   Widget build(BuildContext context) {
@@ -180,6 +192,7 @@ class _FlipBarElement extends StatelessWidget {
       ),
       onTapped: () {
         onTapped(index);
+        Navigator.pushNamed(context, '/$text');
       },
       height: appBarHeight,
     );

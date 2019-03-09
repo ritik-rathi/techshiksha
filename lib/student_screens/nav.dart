@@ -4,16 +4,17 @@ import 'subjects.dart';
 class SubDetail {
   String title;
   String img;
+  String path;
 
-  SubDetail({this.img, this.title});
+  SubDetail({this.img, this.title, this.path});
 }
 
 final titles = [
-  new SubDetail(title: 'NCERT', img: 'assets/book_col.png'),
-  new SubDetail(title: 'NOTES', img: 'assets/notes_col.png'),
-  new SubDetail(title: 'TESTS', img: 'assets/test_col.png'),
-  new SubDetail(title: 'HW', img: 'assets/hw_col.png'),
-  new SubDetail(title: 'REF.', img: 'assets/book_col.png')
+  new SubDetail(title: 'NCERT', img: 'assets/book_col.png', path: '/ncert'),
+  new SubDetail(title: 'NOTES', img: 'assets/notes_col.png', path: '/ncert'),
+  new SubDetail(title: 'TESTS', img: 'assets/test_col.png', path: '/ncert'),
+  new SubDetail(title: 'HW', img: 'assets/hw_col.png', path: '/hw'),
+  new SubDetail(title: 'REF.', img: 'assets/book_col.png', path: '/ncert')
 ];
 
 class Cards extends StatelessWidget {
@@ -31,7 +32,7 @@ class Cards extends StatelessWidget {
           IconButton(
             icon: Image.asset(subs.img),
             onPressed: () {
-              Navigator.pushNamed(context, '/ncert');
+              Navigator.pushNamed(context, subs.path);
             },
             iconSize: 80.0,
           ),
@@ -54,6 +55,8 @@ class NavigationScreen extends StatelessWidget {
     return Scaffold(
         resizeToAvoidBottomPadding: true,
         body: Container(
+          width: MediaQuery.of(context).size.width,
+          //height: Size.height,
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   colors: [color11, color22],
@@ -107,6 +110,8 @@ class NavigationScreen extends StatelessWidget {
               ),
               Positioned(
                 top: 140,
+                left: 20,
+                right: 20,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -135,6 +140,9 @@ class NavigationScreen extends StatelessWidget {
               ),
               Positioned(
                 top: 460,
+                //bottom: 100,
+                left: 20,
+                right: 20,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

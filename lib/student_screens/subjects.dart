@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'main_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 //created a class that can be used in every file since we wanted generic code
 class Subjects {
@@ -23,8 +24,8 @@ final subjects = [
   new Subjects(
       sub: 'Maths',
       imgPath: 'assets/math_icon.png',
-      color1: Colors.yellow[50],
-      color2: Colors.yellow[300]),
+      color1: Colors.yellow[100],
+      color2: Colors.yellow[400]),
   new Subjects(
       sub: 'History',
       imgPath: 'assets/his_col.jpg',
@@ -96,7 +97,8 @@ class SubjectViewModel extends StatelessWidget {
                     fontSize: 20.0,
                     fontStyle: FontStyle.italic,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold))
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "WorkSansSemiBold"))
           ],
         ),
         // decoration: new BoxDecoration(
