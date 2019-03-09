@@ -8,6 +8,7 @@ import 'student_screens/subjects.dart';
 import 'student_screens/nav.dart';
 import 'student_screens/ncert.dart';
 import 'student_screens/hw.dart';
+import 'student_screens/profile.dart';
 
 void main(){
   runApp(MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget{
           '/science': (context) => SubjectViewModel(),
           '/navscreen':(context)=>NavigationScreen(),
           '/ncert': (context) => Ncert(),
-          '/Profile':(context)=> Attendance(),
+          '/Profile':(context)=> Profile(),
           '/Attendance':(context)=> Attendance(),
           '/Scores':(context)=> TestScore(),
           // '/drawer': (context) => Drawer1()
