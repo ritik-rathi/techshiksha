@@ -85,7 +85,7 @@ print(email);
   }
 
   Widget something(BuildContext build) {
-    // print("object");
+    print("object");
      StreamBuilder(
       stream: Firestore.instance
           .collection('/students')
@@ -93,8 +93,8 @@ print(email);
           .snapshots(),
       builder: (context, snapshot) {
         if(!snapshot.hasData)
-        return Text("jain2anki@gmail.com");
-        print("hhh");
+        return Text("Some error occured");
+        print("cool");
         var userdata = snapshot.data;
 return Text("jj");
  Text(userdata['email']);
@@ -119,8 +119,9 @@ return Text("jj");
         formState.save();
 
         try {
-          // Firestore.instance.collection('/students').document(_enrollment).setData(data);
-          something(context);
+        var store =   Firestore.instance.collection('/students').document(_enrollment).setData(data);
+        print(store);
+          // something(context);
           FirebaseUser user = await FirebaseAuth.instance
               .createUserWithEmailAndPassword(email: _semail, password: _psw);
           Navigator.push(context,

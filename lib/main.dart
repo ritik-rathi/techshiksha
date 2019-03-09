@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:techshiksha_student/LoginPage/loginPage.dart';
-<<<<<<< HEAD
-=======
 import 'package:techshiksha_student/student_screens/attendance.dart';
 import 'package:techshiksha_student/student_screens/testscores.dart';
 // import 'package:techshiksha_student/screens/navigation_screen.dart';
->>>>>>> a054b305b4e2bd70b6d1c93af1da506ee1ea6f6d
 import 'student_screens/main_screen.dart';
 import 'student_screens/subjects.dart';
 import 'student_screens/nav.dart';
