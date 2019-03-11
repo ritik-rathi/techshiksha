@@ -1,47 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:techshiksha_student/student_screens/attendance.dart';
+import 'package:techshiksha_student/student_screens/testscores.dart';
 import 'subjects.dart';
-import 'package:techshiksha_student/bottom_navbar2.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:techshiksha_student/bottom_navbar2.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 
 String sub = '';
 Color color1, color2;
-
-// class Drawer1 extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Drawer(
-//       child: ListView(
-//         children: <Widget>[
-//           new UserAccountsDrawerHeader(
-//             accountName: new Text('Ritik Rathi'),
-//             accountEmail: new Text('testemail@test.com'),
-//             currentAccountPicture: new CircleAvatar(
-//               backgroundImage: new NetworkImage('http://i.pravatar.cc/300'),
-//             ),
-//           ),
-//           new ListTile(
-//               title: new Text('Test Scores'),
-//               onTap: () {
-//                 Navigator.of(context).pop();
-//                 Navigator.push(
-//                     context,
-//                     new MaterialPageRoute(
-//                         builder: (BuildContext context) => new TestScore()));
-//               }),
-//           new ListTile(
-//               title: new Text('Attendance'),
-//               onTap: () {
-//                 Navigator.of(context).pop();
-//                 Navigator.push(
-//                     context,
-//                     new MaterialPageRoute(
-//                         builder: (BuildContext context) => new Attendance()));
-//               })
-//         ],
-//       ),
-//     );
-//   }
-// }
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key key, this.user}) : super(key: key);
@@ -51,6 +16,9 @@ class MainScreen extends StatefulWidget {
 }
 
 class MainScreenState extends State<MainScreen> {
+  int index = 0;
+  List<Widget> screens = [HomeScreen() , Attendance() , Scores()];
+
   @override
   Widget build(BuildContext context) {
     // var em = '${'name'}';
@@ -66,7 +34,7 @@ class MainScreenState extends State<MainScreen> {
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Colors.teal, Colors.teal[50]])),
+                  colors: [Colors.teal, Colors.white])),
           child: Stack(
             children: <Widget>[
               new Positioned(
@@ -83,7 +51,7 @@ class MainScreenState extends State<MainScreen> {
                     //TODO: Implement username after backend
                     em,
                     style: new TextStyle(
-                        fontSize: 40, fontWeight: FontWeight.bold)),
+                        fontSize: 40.0, fontWeight: FontWeight.bold)),
               ),
 
               //circle
@@ -125,102 +93,131 @@ class MainScreenState extends State<MainScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: FlipBoxBar(
-        items: [
-          FlipBarItem(
-              icon: new Image.asset('assets/profile.png',
-                  height: 30.0, width: 30.0),
-              text: Text("Profile"),
-              frontColor: Colors.teal[100],
-              backColor: Colors.teal[300]),
-          FlipBarItem(
-              icon: new Image.asset('assets/attendance.png',
-                  height: 30.0, width: 30.0),
-              text: Text("Attendance"),
-              frontColor: Colors.teal[100],
-              backColor: Colors.teal[300]),
-          FlipBarItem(
-              icon: new Image.asset('assets/testscore.png',
-                  height: 30.0, width: 30.0),
-              text: Text("Scores"),
-              frontColor: Colors.teal[100],
-              backColor: Colors.teal[300]),
-          //FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
-          //FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
-        ],
-        onIndexChanged: (newIndex) {
-          print(newIndex);
+      // bottomNavigationBar: FlipBoxBar(
+      //     items: [
+      //       FlipBarItem(icon: new Image.asset('assets/profile.png', height: 30.0, width: 30.0), text: Text("Profile"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+      //       FlipBarItem(icon: new Image.asset('assets/attendance.png', height: 30.0, width: 30.0), text: Text("Attendance"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+      //       FlipBarItem(icon: new Image.asset('assets/testscore.png', height: 30.0, width: 30.0), text: Text("Scores"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+      //       //FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+      //       //FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.teal[100], backColor: Colors.teal[300]),
+      //     ],
+      //     onIndexChanged: (newIndex) {
+      //       print(newIndex);
+      //     },
+      //   ),
+      bottomNavigationBar: new BottomNavigationBar(
+        currentIndex: index,
+        onTap: (int pageIndex) {
+          setState(() {
+            pageIndex = index;
+          });
         },
+        items: [
+          new BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: new Text('Home'),
+              backgroundColor: Colors.teal),
+          new BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              title: new Text('Home'),
+              backgroundColor: Colors.teal),
+          new BottomNavigationBarItem(
+              icon: Icon(Icons.score),
+              title: new Text('Home'),
+              backgroundColor: Colors.teal)
+        ],
       ),
-      // appBar: new AppBar(
-      //   title: Text('SUBJECTS'),
-      // ),
-      // drawer: Drawer1(),
       body: new ListView(children: <Widget>[
-        // new Container(
-        //   decoration: new BoxDecoration(
-        //       image: new DecorationImage(
-        //           image: new AssetImage('assets/bck1.jpg'), fit: BoxFit.cover)),
-        // ),
-        // Container(
-        // //     child: Container(
-        // //       margin: EdgeInsets.only(top: 20.0, left: 10.0),
-        // //       child: IconButton(
-        // //         icon: Image.asset('assets/drawer.png'),
-        // //         onPressed: () {
-        // //           Navigator.pushNamed(context, '/drawer');
-        // //         },
-        // //         iconSize: 40.0,
-        // //         alignment: Alignment.centerLeft,
-        // //         padding: EdgeInsets.only(left: 0.1),
-        // //       ),
-        // //       /*Image(
-        // //   image: new AssetImage('assets/drawer.png'),
-        // //   height: 50.0,
-        // //   width: 50.0,
-        // //   alignment: Alignment.centerLeft,
-        // // ),*/
-        // //     ),
-        // // margin: EdgeInsets.only(bottom: 20.0)
-        // ),
-        // Container(
-        //   child: Text('Hello',
-        //       style:
-        //           TextStyle(fontSize: 30.0, color: Colors.blueAccent)),
-        //   margin: EdgeInsets.only(left: 10.0),
-        // ),
-        // Container(
-        //   child: Text('Ritik',
-        //       style: TextStyle(
-        //           fontSize: 50.0,
-        //           fontWeight: FontWeight.bold,
-        //           color: Colors.blueAccent)),
-        //   margin: EdgeInsets.only(left: 10.0),
-        // ),
-
-        // iconbuttons for various subjects
-
-        new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SubjectViewModel(
-              subject: subjects[0],
-            )
-          ],
+        Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                  child: SubjectViewModel(
+                subject: subjects[0],
+              )),
+              Expanded(
+                child: SubjectViewModel(
+                  subject: subjects[1],
+                ),
+              )
+            ],
+          ),
         ),
-
         new SizedBox(
           height: 10.0,
         ),
         new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SubjectViewModel(
-              subject: subjects[1],
+            Expanded(
+                child: SubjectViewModel(
+              subject: subjects[2],
+            )),
+            Expanded(
+              child: SubjectViewModel(
+                subject: subjects[3],
+              ),
             )
           ],
         ),
+        new SizedBox(
+          height: 10.0,
+        ),
+        new Row(
+          children: <Widget>[
+            Expanded(
+                child: SubjectViewModel(
+              subject: subjects[4],
+            )),
+            Expanded(
+              child: SubjectViewModel(
+                subject: subjects[5],
+              ),
+            )
+          ],
+        ),
+        new SizedBox(
+          height: 10.0,
+        ),
+        new Row(
+          children: <Widget>[
+            Expanded(
+                child: SubjectViewModel(
+              subject: subjects[6],
+            )),
+            Expanded(
+              child: SubjectViewModel(
+                subject: subjects[7],
+              ),
+            )
+          ],
+        ),
+      ]),
+    );
+  }
+}
 
+class HomeScreen extends StatelessWidget{
+  Widget build(BuildContext context){
+    return new ListView(children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                  child: SubjectViewModel(
+                subject: subjects[0],
+              )),
+              Expanded(
+                child: SubjectViewModel(
+                  subject: subjects[1],
+                ),
+              )
+            ],
+          ),
+        ),
         new SizedBox(
           height: 10.0,
         ),
@@ -300,7 +297,7 @@ class MainScreenState extends State<MainScreen> {
         new SizedBox(
           height: 10.0,
         ),
-      ]),
+      ]);
       // bottomNavigationBar: FlipBoxBar(
       //     items: [
       //       FlipBarItem(icon: Icon(Icons.map), text: Text("Map"), frontColor: Colors.blue, backColor: Colors.blueAccent),
@@ -313,6 +310,6 @@ class MainScreenState extends State<MainScreen> {
       //       print(newIndex);
       //     },
       //   ),
-    );
+    
   }
 }
