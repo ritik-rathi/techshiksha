@@ -17,7 +17,7 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen> {
   int index = 0;
-  List<Widget> screens = [HomeScreen() , Attendance() , Scores()];
+  List<Widget> screens = [HomeScreen(), Attendance(), Scores()];
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class MainScreenState extends State<MainScreen> {
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Colors.teal, Colors.white])),
+                  colors: [Colors.teal, Colors.teal[50]])),
           child: Stack(
             children: <Widget>[
               new Positioned(
@@ -128,36 +128,11 @@ class MainScreenState extends State<MainScreen> {
         ],
       ),
       body: new ListView(children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(top: 10.0),
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                  child: SubjectViewModel(
-                subject: subjects[0],
-              )),
-              Expanded(
-                child: SubjectViewModel(
-                  subject: subjects[1],
-                ),
-              )
-            ],
-          ),
-        ),
-        new SizedBox(
-          height: 10.0,
-        ),
         new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Expanded(
-                child: SubjectViewModel(
-              subject: subjects[2],
-            )),
-            Expanded(
-              child: SubjectViewModel(
-                subject: subjects[3],
-              ),
+            SubjectViewModel(
+              subject: subjects[0],
             )
           ],
         ),
@@ -165,58 +140,12 @@ class MainScreenState extends State<MainScreen> {
           height: 10.0,
         ),
         new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Expanded(
-                child: SubjectViewModel(
-              subject: subjects[4],
-            )),
-            Expanded(
-              child: SubjectViewModel(
-                subject: subjects[5],
-              ),
+            SubjectViewModel(
+              subject: subjects[1],
             )
           ],
-        ),
-        new SizedBox(
-          height: 10.0,
-        ),
-        new Row(
-          children: <Widget>[
-            Expanded(
-                child: SubjectViewModel(
-              subject: subjects[6],
-            )),
-            Expanded(
-              child: SubjectViewModel(
-                subject: subjects[7],
-              ),
-            )
-          ],
-        ),
-      ]),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget{
-  Widget build(BuildContext context){
-    return new ListView(children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(top: 10.0),
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                  child: SubjectViewModel(
-                subject: subjects[0],
-              )),
-              Expanded(
-                child: SubjectViewModel(
-                  subject: subjects[1],
-                ),
-              )
-            ],
-          ),
         ),
         new SizedBox(
           height: 10.0,
@@ -229,7 +158,6 @@ class HomeScreen extends StatelessWidget{
             )
           ],
         ),
-
         new SizedBox(
           height: 10.0,
         ),
@@ -241,11 +169,9 @@ class HomeScreen extends StatelessWidget{
             )
           ],
         ),
-
         new SizedBox(
           height: 10.0,
         ),
-
         new Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -254,11 +180,9 @@ class HomeScreen extends StatelessWidget{
             )
           ],
         ),
-
         new SizedBox(
           height: 10.0,
         ),
-
         new Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -267,11 +191,9 @@ class HomeScreen extends StatelessWidget{
             )
           ],
         ),
-
         new SizedBox(
           height: 10.0,
         ),
-
         new Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -280,11 +202,9 @@ class HomeScreen extends StatelessWidget{
             )
           ],
         ),
-
         new SizedBox(
           height: 10.0,
         ),
-
         new Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -293,23 +213,115 @@ class HomeScreen extends StatelessWidget{
             )
           ],
         ),
-
         new SizedBox(
           height: 10.0,
         ),
-      ]);
-      // bottomNavigationBar: FlipBoxBar(
-      //     items: [
-      //       FlipBarItem(icon: Icon(Icons.map), text: Text("Map"), frontColor: Colors.blue, backColor: Colors.blueAccent),
-      //       FlipBarItem(icon: Icon(Icons.add), text: Text("Add"), frontColor: Colors.cyan, backColor: Colors.cyanAccent),
-      //       FlipBarItem(icon: Icon(Icons.chrome_reader_mode), text: Text("Read"), frontColor: Colors.orange, backColor: Colors.orangeAccent),
-      //       FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.purple, backColor: Colors.purpleAccent),
-      //       FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.pink, backColor: Colors.pinkAccent),
-      //     ],
-      //     onIndexChanged: (newIndex) {
-      //       print(newIndex);
-      //     },
-      //   ),
-    
+      ]),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return new ListView(children: <Widget>[
+      Padding(
+        padding: const EdgeInsets.only(top: 10.0),
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+                child: SubjectViewModel(
+              subject: subjects[0],
+            )),
+            Expanded(
+              child: SubjectViewModel(
+                subject: subjects[1],
+              ),
+            )
+          ],
+        ),
+      ),
+      new SizedBox(
+        height: 10.0,
+      ),
+      new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          SubjectViewModel(
+            subject: subjects[2],
+          )
+        ],
+      ),
+      new SizedBox(
+        height: 10.0,
+      ),
+      new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          SubjectViewModel(
+            subject: subjects[3],
+          )
+        ],
+      ),
+      new SizedBox(
+        height: 10.0,
+      ),
+      new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          SubjectViewModel(
+            subject: subjects[4],
+          )
+        ],
+      ),
+      new SizedBox(
+        height: 10.0,
+      ),
+      new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          SubjectViewModel(
+            subject: subjects[5],
+          )
+        ],
+      ),
+      new SizedBox(
+        height: 10.0,
+      ),
+      new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          SubjectViewModel(
+            subject: subjects[6],
+          )
+        ],
+      ),
+      new SizedBox(
+        height: 10.0,
+      ),
+      new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          SubjectViewModel(
+            subject: subjects[7],
+          )
+        ],
+      ),
+      new SizedBox(
+        height: 10.0,
+      ),
+    ]);
+    // bottomNavigationBar: FlipBoxBar(
+    //     items: [
+    //       FlipBarItem(icon: Icon(Icons.map), text: Text("Map"), frontColor: Colors.blue, backColor: Colors.blueAccent),
+    //       FlipBarItem(icon: Icon(Icons.add), text: Text("Add"), frontColor: Colors.cyan, backColor: Colors.cyanAccent),
+    //       FlipBarItem(icon: Icon(Icons.chrome_reader_mode), text: Text("Read"), frontColor: Colors.orange, backColor: Colors.orangeAccent),
+    //       FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.purple, backColor: Colors.purpleAccent),
+    //       FlipBarItem(icon: Icon(Icons.print), text: Text("Print"), frontColor: Colors.pink, backColor: Colors.pinkAccent),
+    //     ],
+    //     onIndexChanged: (newIndex) {
+    //       print(newIndex);
+    //     },
+    //   ),
   }
 }
