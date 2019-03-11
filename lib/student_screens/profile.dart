@@ -5,6 +5,7 @@ class Profile extends StatelessWidget{
   Widget build(BuildContext context) {
     
     return Scaffold(
+      //backgroundColor: Colors.teal[50],
       appBar: new AppBar(
         title: Text('Profile'),
       ),

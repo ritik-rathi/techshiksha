@@ -43,7 +43,14 @@ class Ncert extends StatelessWidget {
           ),
           FlatButton(
             onPressed: () {
-              PdfViewer.loadAsset('assets/science_book.pdf');
+              PdfViewer.loadAsset('assets/science_book.pdf',
+                  config: PdfViewerConfig(
+                      autoSpacing: true,
+                      swipeHorizontal: true,
+                      pageFling: true,
+                      pageSnap: true,
+                      //nightMode: true          
+                    ));
             },
             child: Text(
               '1. Food: Where does it come from?',
@@ -137,7 +144,6 @@ class Ncert extends StatelessWidget {
             height: 20.0,
             color: color11,
           ),
-          
         ],
       ),
     );
