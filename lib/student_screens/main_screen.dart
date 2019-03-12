@@ -109,7 +109,7 @@ class MainScreenState extends State<MainScreen> {
         currentIndex: index,
         onTap: (int pageIndex) {
           setState(() {
-            pageIndex = index;
+            index = pageIndex;
           });
         },
         items: [
@@ -119,104 +119,15 @@ class MainScreenState extends State<MainScreen> {
               backgroundColor: Colors.teal),
           new BottomNavigationBarItem(
               icon: Icon(Icons.list),
-              title: new Text('Home'),
+              title: new Text('Attendance'),
               backgroundColor: Colors.teal),
           new BottomNavigationBarItem(
-              icon: Icon(Icons.score),
-              title: new Text('Home'),
+              icon: Icon(Icons.tab),
+              title: new Text('Test'),
               backgroundColor: Colors.teal)
         ],
       ),
-      body: new ListView(children: <Widget>[
-        new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SubjectViewModel(
-              subject: subjects[0],
-            )
-          ],
-        ),
-        new SizedBox(
-          height: 10.0,
-        ),
-        new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SubjectViewModel(
-              subject: subjects[1],
-            )
-          ],
-        ),
-        new SizedBox(
-          height: 10.0,
-        ),
-        new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SubjectViewModel(
-              subject: subjects[2],
-            )
-          ],
-        ),
-        new SizedBox(
-          height: 10.0,
-        ),
-        new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SubjectViewModel(
-              subject: subjects[3],
-            )
-          ],
-        ),
-        new SizedBox(
-          height: 10.0,
-        ),
-        new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SubjectViewModel(
-              subject: subjects[4],
-            )
-          ],
-        ),
-        new SizedBox(
-          height: 10.0,
-        ),
-        new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SubjectViewModel(
-              subject: subjects[5],
-            )
-          ],
-        ),
-        new SizedBox(
-          height: 10.0,
-        ),
-        new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SubjectViewModel(
-              subject: subjects[6],
-            )
-          ],
-        ),
-        new SizedBox(
-          height: 10.0,
-        ),
-        new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SubjectViewModel(
-              subject: subjects[7],
-            )
-          ],
-        ),
-        new SizedBox(
-          height: 10.0,
-        ),
-      ]),
+      body: screens[index],
     );
   }
 }
@@ -229,17 +140,22 @@ class HomeScreen extends StatelessWidget {
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Expanded(
-                child: SubjectViewModel(
+            SubjectViewModel(
               subject: subjects[0],
-            )),
-            Expanded(
-              child: SubjectViewModel(
-                subject: subjects[1],
-              ),
-            )
+            ),
           ],
         ),
+      ),
+      new SizedBox(
+        height: 10.0,
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          SubjectViewModel(
+            subject: subjects[1],
+          ),
+        ],
       ),
       new SizedBox(
         height: 10.0,
