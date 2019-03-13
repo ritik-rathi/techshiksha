@@ -41,13 +41,12 @@ class Cards extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5)),
               child: Center(
                 child: Text(
-                      subs.title,
-                      style: TextStyle(
-                          color: color22,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  
+                  subs.title,
+                  style: TextStyle(
+                      color: color22,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold),
+                ),
               ))),
       onTap: () {
         Navigator.pushNamed(context, subs.path);
