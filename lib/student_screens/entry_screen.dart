@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class EntryScreen extends StatefulWidget {
   _EntryScreenState createState() => _EntryScreenState();
@@ -13,6 +14,7 @@ class _EntryScreenState extends State<EntryScreen> with SingleTickerProviderStat
     super.initState();
     fadeAnimationController = new AnimationController(vsync: this , duration: Duration(seconds: 2));
     fadeAnimation = new CurvedAnimation(curve: Curves.easeInCirc , parent: fadeAnimationController);
+    Timer(Duration(seconds: 3), ()=> Navigator.pushNamed(context, '/home'));
   }
   @override
   void dispose() {
@@ -24,11 +26,7 @@ class _EntryScreenState extends State<EntryScreen> with SingleTickerProviderStat
     fadeAnimationController.forward();
     return FadeTransition(
       opacity: fadeAnimation,
-          child: GestureDetector(
-            onTap: (){
-              Navigator.pushNamed(context, '/home');
-            },
-                      child: Container(
+          child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height >= 775.0
                 ? MediaQuery.of(context).size.height
@@ -47,7 +45,6 @@ class _EntryScreenState extends State<EntryScreen> with SingleTickerProviderStat
                 image: AssetImage('assets/logo.png'),
               ),
             )),
-          ),
     );
   }
 }
