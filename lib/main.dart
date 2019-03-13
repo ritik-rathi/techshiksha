@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget{
         home: MainScreen(),
         initialRoute: '.',
         routes: {
-          '.':(context) => MainScreen(),
+          '.':(context) => StartPage(),
           '/home':(context)=> MainScreen(),
           '/science': (context) => SubjectViewModel(),
           '/navscreen':(context)=>NavigationScreen(),
