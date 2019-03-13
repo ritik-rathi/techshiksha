@@ -89,6 +89,12 @@ flutter:
     - assets/logo.png
     - assets/ritik.jpeg
     - assets/science_book.pdf
+    - assets/sc1.pdf
+    - assets/sc2.pdf
+    - assets/sc3.pdf
+    - assets/sc4.pdf
+    - assets/sc5.pdf
+    - assets/sc6.pdf
     
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg

@@ -43,7 +43,7 @@ class Ncert extends StatelessWidget {
           ),
           FlatButton(
             onPressed: () {
-              PdfViewer.loadAsset('assets/science_book.pdf',
+              PdfViewer.loadAsset('assets/sc1.pdf',
                   config: PdfViewerConfig(
                       autoSpacing: true,
                       swipeHorizontal: true,
@@ -63,7 +63,16 @@ class Ncert extends StatelessWidget {
             color: color11,
           ),
           FlatButton(
-            onPressed: () {},
+            onPressed: () {
+              PdfViewer.loadAsset('assets/sc2.pdf',
+                  config: PdfViewerConfig(
+                      autoSpacing: true,
+                      swipeHorizontal: true,
+                      pageFling: true,
+                      pageSnap: true,
+                      //nightMode: true          
+                    ));
+            },
             child: Text('2. Components of food',
                 style: TextStyle(
                   color: Colors.grey,
@@ -76,7 +85,16 @@ class Ncert extends StatelessWidget {
             color: color11,
           ),
           FlatButton(
-            onPressed: () {},
+            onPressed: () {
+              PdfViewer.loadAsset('assets/sc3.pdf',
+                  config: PdfViewerConfig(
+                      autoSpacing: true,
+                      swipeHorizontal: true,
+                      pageFling: true,
+                      pageSnap: true,
+                      //nightMode: true          
+                    ));
+            },
             child: Text('3. Fibre to fabric',
                 style: TextStyle(color: Colors.grey, fontSize: 20.0)),
           ),
@@ -85,7 +103,16 @@ class Ncert extends StatelessWidget {
             color: color11,
           ),
           FlatButton(
-            onPressed: () {},
+            onPressed: () {
+              PdfViewer.loadAsset('assets/sc4.pdf',
+                  config: PdfViewerConfig(
+                      autoSpacing: true,
+                      swipeHorizontal: true,
+                      pageFling: true,
+                      pageSnap: true,
+                      //nightMode: true          
+                    ));
+            },
             child: Text('4. Sorting materials into groups',
                 style: TextStyle(color: Colors.grey, fontSize: 20.0),
                 textAlign: TextAlign.left),
@@ -95,7 +122,16 @@ class Ncert extends StatelessWidget {
             color: color11,
           ),
           FlatButton(
-            onPressed: () {},
+            onPressed: () {
+              PdfViewer.loadAsset('assets/sc5.pdf',
+                  config: PdfViewerConfig(
+                      autoSpacing: true,
+                      swipeHorizontal: true,
+                      pageFling: true,
+                      pageSnap: true,
+                      //nightMode: true          
+                    ));
+            },
             child: Text('5. Separation of substances',
                 style: TextStyle(color: Colors.grey, fontSize: 20.0),
                 textAlign: TextAlign.left),
@@ -105,7 +141,16 @@ class Ncert extends StatelessWidget {
             color: color11,
           ),
           FlatButton(
-            onPressed: () {},
+            onPressed: () {
+              PdfViewer.loadAsset('assets/sc6.pdf',
+                  config: PdfViewerConfig(
+                      autoSpacing: true,
+                      swipeHorizontal: true,
+                      pageFling: true,
+                      pageSnap: true,
+                      //nightMode: true          
+                    ));
+            },
             child: Text('6. Changes around us',
                 style: TextStyle(color: Colors.grey, fontSize: 20.0),
                 textAlign: TextAlign.left),

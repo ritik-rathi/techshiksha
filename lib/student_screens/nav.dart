@@ -10,11 +10,12 @@ class SubDetail {
 }
 
 final titles = [
-  new SubDetail(title: 'NCERT', img: 'assets/book_col.png', path: '/ncert'),
-  new SubDetail(title: 'NOTES', img: 'assets/notes_col.png', path: '/ncert'),
-  new SubDetail(title: 'TESTS', img: 'assets/test_col.png', path: '/ncert'),
-  new SubDetail(title: 'HW', img: 'assets/hw_col.png', path: '/hw'),
-  new SubDetail(title: 'REF.', img: 'assets/book_col.png', path: '/ncert')
+  new SubDetail(title: 'NCERT', img: 'assets/book.png', path: '/ncert'),
+  new SubDetail(title: 'NOTES', img: 'assets/notes.png', path: '/ncert'),
+  new SubDetail(title: 'TESTS', img: 'assets/test.png', path: '/ncert'),
+  new SubDetail(title: 'Home\n Work', img: 'assets/hw1.png', path: '/hw'),
+  new SubDetail(
+      title: 'Reference\n     Book', img: 'assets/book.png', path: '/ncert')
 ];
 
 class Cards extends StatelessWidget {
@@ -23,25 +24,34 @@ class Cards extends StatelessWidget {
   Cards({this.subs});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 151,
-      width: 100,
-      //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-      child: Column(
-        children: <Widget>[
-          IconButton(
-            icon: Image.asset(subs.img),
-            onPressed: () {
-              Navigator.pushNamed(context, subs.path);
-            },
-            iconSize: 80.0,
-          ),
-          Text(
-            subs.title,
-            style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-          )
-        ],
-      ),
+    return GestureDetector(
+      child: GestureDetector(
+          child: Container(
+              height: 150,
+              width: 150,
+              decoration: BoxDecoration(
+                  boxShadow: [
+                    new BoxShadow(
+                        //color: Colors.grey,
+                        offset: Offset(5, 5),
+                        blurRadius: 5)
+                  ],
+                  color: Colors.white,
+                  border: Border.all(width: 2, color: Colors.black),
+                  borderRadius: BorderRadius.circular(5)),
+              child: Center(
+                child: Text(
+                      subs.title,
+                      style: TextStyle(
+                          color: color22,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  
+              ))),
+      onTap: () {
+        Navigator.pushNamed(context, subs.path);
+      },
     );
   }
 }
@@ -62,9 +72,8 @@ class NavigationScreen extends StatelessWidget {
                   colors: [color11, color22],
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight)),
-          child:Stack(
+          child: Stack(
             children: <Widget>[
-              
               new Positioned(
                 top: 0.0,
                 left: 10.0,
@@ -77,8 +86,8 @@ class NavigationScreen extends StatelessWidget {
                 ),
               ),
               new Positioned(
-                top: 150.0,
-                right: 10.0,
+                top: 300,
+                right: -100.0,
                 child: Container(
                   height: 200.0,
                   width: 200.0,
@@ -88,8 +97,8 @@ class NavigationScreen extends StatelessWidget {
                 ),
               ),
               new Positioned(
-                bottom: 15.0,
-                left: 2.0,
+                bottom: -125.0,
+                left: -125.0,
                 child: Container(
                   height: 250.0,
                   width: 250.0,
@@ -110,19 +119,19 @@ class NavigationScreen extends StatelessWidget {
               ),
               Positioned(
                 top: 140,
-                left: 20,
-                right: 20,
+                left: 10,
+                //right: 20,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(left: 20.0),
+                      margin: EdgeInsets.only(left: 20.0, right: 15),
                       child: Cards(
                         subs: titles[0],
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(right: 20.0, left: 110.0),
+                      margin: EdgeInsets.only(right: 20.0, left: 15),
                       child: Cards(
                         subs: titles[1],
                       ),
@@ -131,31 +140,34 @@ class NavigationScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
-                child: Cards(
-                  subs: titles[2],
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Cards(
+                      subs: titles[2],
+                    ),
+                  ],
                 ),
-                top: 300,
-                left: 100,
-                right: 100,
+                top: 330,
+                left: 120,
+                right: 120,
               ),
               Positioned(
-                top: 460,
+                top: 520,
                 //bottom: 100,
-                left: 20,
-                right: 20,
+                left: 10,
+                //right: 20,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      width: 100.0,
-                      margin: EdgeInsets.only(left: 20.0),
+                      margin: EdgeInsets.only(left: 20.0, right: 15),
                       child: Cards(
                         subs: titles[3],
                       ),
                     ),
                     Container(
-                      width: 100.0,
-                      margin: EdgeInsets.only(right: 20.0, left: 110.0),
+                      margin: EdgeInsets.only(right: 20.0, left: 15),
                       child: Cards(
                         subs: titles[4],
                       ),
