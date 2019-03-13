@@ -96,7 +96,7 @@ print("object");
       FirebaseUser user = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: mail, password: _loginp);
       Navigator.push(context,
-          MaterialPageRoute(builder: (context) => MainScreen(user: name)));
+          MaterialPageRoute(builder: (context) => MainScreen(user: _logine)));
     } catch (e) {
       print(e);
     }
