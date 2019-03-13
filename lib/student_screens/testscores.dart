@@ -37,11 +37,11 @@ class TestScore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.teal[50],
-      appBar: new AppBar(
-        title: Text('Test Scores'),
-        backgroundColor: Colors.teal[300],
-      ),
+      backgroundColor: Colors.teal[50],
+      // appBar: new AppBar(
+      //   title: Text('Test Scores'),
+      //   backgroundColor: Colors.teal[300],
+      // ),
       body: ListView(
         children: <Widget>[
           //SizedBox(height: 30.0),

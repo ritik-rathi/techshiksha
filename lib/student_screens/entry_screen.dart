@@ -18,7 +18,7 @@ class _EntryScreenState extends State<EntryScreen> with SingleTickerProviderStat
   }
   @override
   void dispose() {
-    // TODO: implement dispose
+    fadeAnimationController.dispose();
     super.dispose();
   }
   @override
