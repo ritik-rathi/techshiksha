@@ -30,7 +30,7 @@ final subjects = [
       sub: 'History',
       imgPath: 'assets/his_col.jpg',
       color1: Colors.orange[50],
-      color2: Colors.orange[300]),
+      color2: Colors.brown),
   new Subjects(
       sub: 'Civics',
       imgPath: 'assets/civ_col.jpg',
@@ -77,26 +77,26 @@ class SubjectViewModel extends StatelessWidget {
       },
       child: Container(
         width: 250,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            border: Border(
-              top: BorderSide(
-                  color: Colors.black, width: 2, style: BorderStyle.solid),
-              left: BorderSide(
-                  color: Colors.black, width: 2, style: BorderStyle.solid),
-              right: BorderSide(
-                  color: Colors.black, width: 2, style: BorderStyle.solid),
-              bottom: BorderSide(
-                  color: Colors.black, width: 2, style: BorderStyle.solid),
-            ),
-          ),
+          // decoration: BoxDecoration(
+          //   borderRadius: BorderRadius.circular(15),
+          //   border: Border(
+          //     top: BorderSide(
+          //         color: Colors.black, width: 2, style: BorderStyle.solid),
+          //     left: BorderSide(
+          //         color: Colors.black, width: 2, style: BorderStyle.solid),
+          //     right: BorderSide(
+          //         color: Colors.black, width: 2, style: BorderStyle.solid),
+          //     bottom: BorderSide(
+          //         color: Colors.black, width: 2, style: BorderStyle.solid),
+          //   ),
+          // ),
           margin: EdgeInsets.only(left: 5.0, right: 10.0, top: 20.0),
           child: Center(
             child: Text(
               subject.sub,
               style: TextStyle(
                   color: subject.color2,
-                  fontSize: 40,
+                  fontSize: 50,
                   fontWeight: FontWeight.bold),
             ),
           )),

@@ -24,7 +24,7 @@ class MainScreenState extends State<MainScreen> {
     // var em = '${'name'}';
     var em = "${widget.user}";
     return Scaffold(
-      backgroundColor: Colors.teal[50],
+      // backgroundColor: Colors.green[200],
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 150),
         child: new Container(
@@ -135,94 +135,339 @@ class MainScreenState extends State<MainScreen> {
 class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return new ListView(children: <Widget>[
-      Padding(
-        padding: const EdgeInsets.only(top: 10.0),
-        child: new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SubjectViewModel(
-              subject: subjects[0],
+      Stack(
+              children:<Widget>[ 
+                Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Opacity(
+            opacity: 0.55,
+            child: Container(
+              width: double.infinity,
+              height: 150.0,
+              decoration: BoxDecoration(
+                  // color: Colors.white54,
+                  image: new DecorationImage(
+                      image: AssetImage('assets/science.png'),
+                      fit: BoxFit.cover)),
+              
             ),
-          ],
-        ),
-      ),
-      new SizedBox(
-        height: 10.0,
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          SubjectViewModel(
-            subject: subjects[1],
+            
           ),
-        ],
+        ),
+        Positioned(
+          top: 50.0,
+          left: 50.0,
+          child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SubjectViewModel(
+                      subject: subjects[0],
+                    ),
+                  ],
+                ),
+        ),
+        ]
       ),
       new SizedBox(
         height: 10.0,
       ),
-      new Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          SubjectViewModel(
-            subject: subjects[2],
-          )
-        ],
+            Stack(
+              children:<Widget>[ 
+                Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Opacity(
+            opacity: 0.5,
+            child: Container(
+              width: double.infinity,
+              height: 150.0,
+              decoration: BoxDecoration(
+                  // color: Colors.white54,
+                  image: new DecorationImage(
+                      image: AssetImage('assets/maths.jpg'),
+                      fit: BoxFit.cover)),
+              
+            ),
+            
+          ),
+        ),
+        Positioned(
+          top: 50.0,
+          left: 50.0,
+          child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SubjectViewModel(
+                      subject: subjects[1],
+                    ),
+                  ],
+                ),
+        ),
+        ]
+      ),
+      // Row(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   children: <Widget>[
+      //     SubjectViewModel(
+      //       subject: subjects[1],
+      //     ),
+      //   ],
+      // ),
+      new SizedBox(
+        height: 10.0,
+      ),
+            Stack(
+              children:<Widget>[ 
+                Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Opacity(
+            opacity: 0.3,
+            child: Container(
+              width: double.infinity,
+              height: 150.0,
+              decoration: BoxDecoration(
+                  // color: Colors.white54,
+                  image: new DecorationImage(
+                      image: AssetImage('assets/history.jpg'),
+                      fit: BoxFit.cover)),
+              
+            ),
+            
+          ),
+        ),
+        Positioned(
+          top: 50.0,
+          left: 50.0,
+          child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SubjectViewModel(
+                      subject: subjects[2],
+                    ),
+                  ],
+                ),
+        ),
+        ]
+      ),
+      // new Row(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   children: <Widget>[
+      //     SubjectViewModel(
+      //       subject: subjects[2],
+      //     )
+      //   ],
+      // ),
+      new SizedBox(
+        height: 10.0,
+      ),
+            Stack(
+              children:<Widget>[ 
+                Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Opacity(
+            opacity: 0.5,
+            child: Container(
+              width: double.infinity,
+              height: 150.0,
+              decoration: BoxDecoration(
+                  // color: Colors.white54,
+                  image: new DecorationImage(
+                      image: AssetImage('assets/geography.jpg'),
+                      fit: BoxFit.cover)),
+              
+            ),
+            
+          ),
+        ),
+        Positioned(
+          top: 50.0,
+          left: 50.0,
+          child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SubjectViewModel(
+                      subject: subjects[3],
+                    ),
+                  ],
+                ),
+        ),
+        ]
       ),
       new SizedBox(
         height: 10.0,
       ),
-      new Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          SubjectViewModel(
-            subject: subjects[3],
-          )
-        ],
+            Stack(
+              children:<Widget>[ 
+                Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Opacity(
+            opacity: 0.5,
+            child: Container(
+              width: double.infinity,
+              height: 150.0,
+              decoration: BoxDecoration(
+                  // color: Colors.white54,
+                  image: new DecorationImage(
+                      image: AssetImage('assets/science.png'),
+                      fit: BoxFit.cover)),
+              
+            ),
+            
+          ),
+        ),
+        Positioned(
+          top: 50.0,
+          left: 50.0,
+          child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SubjectViewModel(
+                      subject: subjects[4],
+                    ),
+                  ],
+                ),
+        ),
+        ]
       ),
+      // new Row(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   children: <Widget>[
+      //     SubjectViewModel(
+      //       subject: subjects[4],
+      //     )
+      //   ],
+      // ),
       new SizedBox(
         height: 10.0,
       ),
-      new Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          SubjectViewModel(
-            subject: subjects[4],
-          )
-        ],
+            Stack(
+              children:<Widget>[ 
+                Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Opacity(
+            opacity: 0.5,
+            child: Container(
+              width: double.infinity,
+              height: 150.0,
+              decoration: BoxDecoration(
+                  // color: Colors.white54,
+                  image: new DecorationImage(
+                      image: AssetImage('assets/science.png'),
+                      fit: BoxFit.cover)),
+              
+            ),
+            
+          ),
+        ),
+        Positioned(
+          top: 50.0,
+          left: 50.0,
+          child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SubjectViewModel(
+                      subject: subjects[5],
+                    ),
+                  ],
+                ),
+        ),
+        ]
       ),
+      // new Row(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   children: <Widget>[
+      //     SubjectViewModel(
+      //       subject: subjects[5],
+      //     )
+      //   ],
+      // ),
       new SizedBox(
         height: 10.0,
       ),
-      new Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          SubjectViewModel(
-            subject: subjects[5],
-          )
-        ],
+            Stack(
+              children:<Widget>[ 
+                Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Opacity(
+            opacity: 0.5,
+            child: Container(
+              width: double.infinity,
+              height: 150.0,
+              decoration: BoxDecoration(
+                  // color: Colors.white54,
+                  image: new DecorationImage(
+                      image: AssetImage('assets/science.png'),
+                      fit: BoxFit.cover)),
+              
+            ),
+            
+          ),
+        ),
+        Positioned(
+          top: 50.0,
+          left: 50.0,
+          child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SubjectViewModel(
+                      subject: subjects[6],
+                    ),
+                  ],
+                ),
+        ),
+        ]
       ),
+      // new Row(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   children: <Widget>[
+      //     SubjectViewModel(
+      //       subject: subjects[6],
+      //     )
+      //   ],
+      // ),
       new SizedBox(
         height: 10.0,
       ),
-      new Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          SubjectViewModel(
-            subject: subjects[6],
-          )
-        ],
+            Stack(
+              children:<Widget>[ 
+                Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Opacity(
+            opacity: 0.5,
+            child: Container(
+              width: double.infinity,
+              height: 150.0,
+              decoration: BoxDecoration(
+                  // color: Colors.white54,
+                  image: new DecorationImage(
+                      image: AssetImage('assets/science.png'),
+                      fit: BoxFit.cover)),
+              
+            ),
+            
+          ),
+        ),
+        Positioned(
+          top: 50.0,
+          left: 50.0,
+          child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SubjectViewModel(
+                      subject: subjects[7],
+                    ),
+                  ],
+                ),
+        ),
+        ]
       ),
-      new SizedBox(
-        height: 10.0,
-      ),
-      new Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          SubjectViewModel(
-            subject: subjects[7],
-          )
-        ],
-      ),
+      // new Row(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   children: <Widget>[
+      //     SubjectViewModel(
+      //       subject: subjects[7],
+      //     )
+      //   ],
+      // ),
       new SizedBox(
         height: 10.0,
       ),

@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget{
         debugShowCheckedModeBanner: false,
         home: MainScreen(),
         initialRoute: '.',
+        theme: ThemeData.light(),
         routes: {
           '.':(context) => MainScreen(),
           '/home':(context)=> MainScreen(),
