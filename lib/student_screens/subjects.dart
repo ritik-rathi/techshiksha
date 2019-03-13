@@ -20,12 +20,12 @@ final subjects = [
       sub: 'Science',
       imgPath: 'assets/science_col.png',
       color1: Colors.cyan[50],
-      color2: Colors.cyan[300]),
+      color2: Colors.redAccent),
   new Subjects(
       sub: 'Maths',
       imgPath: 'assets/math_icon.png',
       color1: Colors.yellow,
-      color2: Colors.yellow[800]),
+      color2: Colors.blueAccent),
   new Subjects(
       sub: 'History',
       imgPath: 'assets/his_col.jpg',
@@ -96,7 +96,7 @@ class SubjectViewModel extends StatelessWidget {
               subject.sub,
               style: TextStyle(
                   color: subject.color2,
-                  fontSize: 50,
+                  fontSize: 70,
                   fontWeight: FontWeight.bold),
             ),
           )),

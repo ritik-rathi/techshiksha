@@ -19,7 +19,7 @@ class MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     // var em = '${'name'}';
-    //var em = "${widget.user}";
+    var em = "${widget.user}";
     return Scaffold(
       body: DefaultTabController(
         length: 2,
@@ -35,8 +35,8 @@ class MainScreenState extends State<MainScreen> {
                   floating: false,
                   pinned: true,
                   flexibleSpace: FlexibleSpaceBar(
-                      centerTitle: true,
-                      title: Text("Hello Ritik",
+                      centerTitle: false,
+                      title: Text("Hello\nRitik Rathi!",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16.0,
@@ -57,11 +57,7 @@ class MainScreenState extends State<MainScreen> {
                       unselectedLabelColor: Colors.grey,
                       tabs: [
                         Tab(
-                          icon: Icon(Icons.account_circle),
-                          text: "Profile",
-                        ),
-                        Tab(
-                          icon: Icon(Icons.lightbulb_outline),
+                          icon: Icon(Icons.calendar_today),
                           text: "Attendance",
                         ),
                         Tab(
@@ -75,16 +71,15 @@ class MainScreenState extends State<MainScreen> {
                 ),
               ];
             },
-            body: 
-            ListView(children: <Widget>[
+            body: ListView(children: <Widget>[
               Stack(children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
+                  padding: const EdgeInsets.only(top: 2.0),
                   child: Opacity(
-                    opacity: 0.55,
+                    opacity: 0.3,
                     child: Container(
                       width: double.infinity,
-                      height: 150.0,
+                      height: 200.0,
                       decoration: BoxDecoration(
                           // color: Colors.white54,
                           image: new DecorationImage(
@@ -94,8 +89,10 @@ class MainScreenState extends State<MainScreen> {
                   ),
                 ),
                 Positioned(
-                  top: 50.0,
-                  left: 50.0,
+                  top: 20.0,
+                  bottom: 20,
+                  left: 30.0,
+                  right: 30,
                   child: new Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -113,10 +110,10 @@ class MainScreenState extends State<MainScreen> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0),
                   child: Opacity(
-                    opacity: 0.5,
+                    opacity: 0.3,
                     child: Container(
                       width: double.infinity,
-                      height: 150.0,
+                      height: 200.0,
                       decoration: BoxDecoration(
                           // color: Colors.white54,
                           image: new DecorationImage(
@@ -126,8 +123,10 @@ class MainScreenState extends State<MainScreen> {
                   ),
                 ),
                 Positioned(
-                  top: 50.0,
-                  left: 50.0,
+                  top: 20.0,
+                  bottom: 20,
+                  left: 30.0,
+                  right: 30,
                   child: new Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -156,7 +155,7 @@ class MainScreenState extends State<MainScreen> {
                     opacity: 0.3,
                     child: Container(
                       width: double.infinity,
-                      height: 150.0,
+                      height: 200.0,
                       decoration: BoxDecoration(
                           // color: Colors.white54,
                           image: new DecorationImage(
@@ -166,8 +165,10 @@ class MainScreenState extends State<MainScreen> {
                   ),
                 ),
                 Positioned(
-                  top: 50.0,
-                  left: 50.0,
+                  top: 20.0,
+                  bottom: 20,
+                  left: 30.0,
+                  right: 30,
                   child: new Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -228,18 +229,20 @@ class MainScreenState extends State<MainScreen> {
                     opacity: 0.5,
                     child: Container(
                       width: double.infinity,
-                      height: 150.0,
+                      height: 200.0,
                       decoration: BoxDecoration(
                           // color: Colors.white54,
                           image: new DecorationImage(
-                              image: AssetImage('assets/science.png'),
+                              image: AssetImage('assets/geo.jpg'),
                               fit: BoxFit.cover)),
                     ),
                   ),
                 ),
                 Positioned(
-                  top: 50.0,
-                  left: 50.0,
+                  //top: 20.0,
+                  //bottom: 20,
+                  // left: 30.0,
+                  // right: 30,
                   child: new Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -381,8 +384,7 @@ class MainScreenState extends State<MainScreen> {
               new SizedBox(
                 height: 10.0,
               ),
-            ])
-            ),
+            ])),
       ),
     );
   }
