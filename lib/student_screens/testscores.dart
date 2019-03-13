@@ -17,7 +17,8 @@ class Tests extends StatelessWidget {
           Navigator.pushNamed(context, '/SubScore');
         },
         child: Container(
-            // margin: EdgeInsets.only(left: 5.0, right: 10.0, top: 20.0),
+            //padding: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
+            margin: EdgeInsets.only(left: 5.0, right: 10.0, top: 20.0),
             height: 150,
             width: 50,
             decoration: BoxDecoration(
@@ -36,6 +37,7 @@ class TestScore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Colors.teal[50],
       appBar: new AppBar(
         title: Text('Test Scores'),
         backgroundColor: Colors.teal[300],

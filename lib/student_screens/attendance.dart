@@ -21,25 +21,34 @@ class Attendance extends StatefulWidget {
 
 class _AttendanceState extends State<Attendance> {
   @override
-  void setState(fn) {
-    // TODO: implement setState
-    super.setState(fn);
+  void initState() {
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: Text('Attendance'),
-      ),
-      body: Container(
-        child: CalendarCarousel(
+      
+      //backgroundColor: Colors.teal[50],
+      // appBar: new AppBar(
+      //   title: Text('Attendance'),
+      // ),
+      body: ListView(children: <Widget>[
+        CalendarCarousel(
+          width: double.infinity,
+          height: 500,
+          // markedDatesMap: EventList(events: <DateTime, List<dynamic>>{
+          //   new DateTime(2019, 3, 15): ["Party"]
+          // }),
+          markedDateShowIcon: false,
+          markedDateIconBorderColor: attendance(),
           todayButtonColor: attendance(),
           todayBorderColor: Colors.black,
           daysHaveCircularBorder: true,
         ),
-      
-      ),
+        Text("Test")
+      ]),
     );
   }
 }
