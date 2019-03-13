@@ -52,6 +52,7 @@ class MainScreenState extends State<MainScreen> {
                 SliverPersistentHeader(
                   delegate: _SliverAppBarDelegate(
                     TabBar(
+                      indicatorColor: Color(0xFFE1306C),
                       labelColor: Colors.black87,
                       unselectedLabelColor: Colors.grey,
                       tabs: [
