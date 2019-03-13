@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget{
         initialRoute: '.',
         theme: ThemeData.light(),
         routes: {
-          '.':(context) => StartPage(),
+          '.':(context) => MainScreen(),
           '/home':(context)=> MainScreen(),
           '/science': (context) => SubjectViewModel(),
           '/navscreen':(context)=>NavigationScreen(),
