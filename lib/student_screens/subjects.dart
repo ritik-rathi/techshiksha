@@ -76,7 +76,7 @@ class SubjectViewModel extends StatelessWidget {
         Navigator.pushNamed(context, '/navscreen');
       },
       child: Container(
-        width: 250,
+          width: 250,
           // decoration: BoxDecoration(
           //   borderRadius: BorderRadius.circular(15),
           //   border: Border(
@@ -95,6 +95,11 @@ class SubjectViewModel extends StatelessWidget {
             child: Text(
               subject.sub,
               style: TextStyle(
+                  shadows: [
+                    Shadow(color: Colors.black, offset: Offset(-1.0, 2.0)),
+                    Shadow(color: Colors.black, offset: Offset(-2.0, -2.0)),
+                    Shadow(color: Colors.black , offset: Offset(1.0, -2.0))
+                  ],
                   color: subject.color2,
                   fontSize: 70,
                   fontWeight: FontWeight.bold),

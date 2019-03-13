@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:techshiksha_student/student_screens/attendance.dart';
 import 'package:techshiksha_student/student_screens/testscores.dart';
@@ -15,11 +17,12 @@ class MainScreen extends StatefulWidget {
   MainScreenState createState() => MainScreenState();
 }
 
-class MainScreenState extends State<MainScreen> with SingleTickerProviderStateMixin{
+class MainScreenState extends State<MainScreen>
+    with SingleTickerProviderStateMixin {
   // TabController tabController;
   // ScrollController scrollController;
 
-  // void initState() { 
+  // void initState() {
   //   super.initState();
   //   tabController = new TabController(vsync: this , length: 3);
   //   scrollController = new ScrollController();
@@ -99,118 +102,96 @@ class HomeScreen extends StatelessWidget {
       Stack(children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(top: 2.0),
-          child: Opacity(
-            opacity: 0.3,
-            child: Container(
-              width: double.infinity,
-              height: 200.0,
-              decoration: BoxDecoration(
-                  // color: Colors.white54,
-                  image: new DecorationImage(
-                      image: AssetImage('assets/science.png'),
-                      fit: BoxFit.cover)),
-            ),
+          child: Container(
+            width: double.infinity,
+            height: 200.0,
+            decoration: BoxDecoration(                
+                image: new DecorationImage(
+                    image: AssetImage('assets/science.png'),
+                    fit: BoxFit.cover)),
           ),
         ),
-        Positioned(
-          top: 20.0,
-          bottom: 20,
-          left: 30.0,
-          right: 30,
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SubjectViewModel(
+        Padding(
+          padding: const EdgeInsets.only(top:2.0),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+            child: new Container(
+              width: double.infinity,
+              height: 200.0,
+              decoration: new BoxDecoration(
+                color:Colors.grey.withOpacity(0.3),
+              ),
+              child: SubjectViewModel(
                 subject: subjects[0],
               ),
-            ],
+            ),
           ),
-        ),
+        )
       ]),
       new SizedBox(
         height: 10.0,
       ),
       Stack(children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 10.0),
-          child: Opacity(
-            opacity: 0.3,
-            child: Container(
-              width: double.infinity,
-              height: 200.0,
-              decoration: BoxDecoration(
-                  // color: Colors.white54,
-                  image: new DecorationImage(
-                      image: AssetImage('assets/maths.jpg'),
-                      fit: BoxFit.cover)),
-            ),
+          padding: const EdgeInsets.only(top: 2.0),
+          child: Container(
+            width: double.infinity,
+            height: 200.0,
+            decoration: BoxDecoration(                
+                image: new DecorationImage(
+                    image: AssetImage('assets/maths.jpg'),
+                    fit: BoxFit.cover)),
           ),
         ),
-        Positioned(
-          top: 20.0,
-          bottom: 20,
-          left: 30.0,
-          right: 30,
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SubjectViewModel(
+        Padding(
+          padding: const EdgeInsets.only(top:2.0),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+            child: new Container(
+              width: double.infinity,
+              height: 200.0,
+              decoration: new BoxDecoration(
+                color:Colors.grey.withOpacity(0.3),
+              ),
+              child: SubjectViewModel(
                 subject: subjects[1],
               ),
-            ],
+            ),
           ),
-        ),
+        )
       ]),
-      // Row(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   children: <Widget>[
-      //     SubjectViewModel(
-      //       subject: subjects[1],
-      //     ),
-      //   ],
-      // ),
       new SizedBox(
         height: 10.0,
       ),
-      Stack(children: <Widget>[
+     Stack(children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 10.0),
-          child: Opacity(
-            opacity: 0.3,
-            child: Container(
+          padding: const EdgeInsets.only(top: 2.0),
+          child: Container(
+            width: double.infinity,
+            height: 200.0,
+            decoration: BoxDecoration(                
+                image: new DecorationImage(
+                    image: AssetImage('assets/history.jpg'),
+                    fit: BoxFit.cover)),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top:2.0),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+            child: new Container(
               width: double.infinity,
               height: 200.0,
-              decoration: BoxDecoration(
-                  // color: Colors.white54,
-                  image: new DecorationImage(
-                      image: AssetImage('assets/history.jpg'),
-                      fit: BoxFit.cover)),
-            ),
-          ),
-        ),
-        Positioned(
-          top: 20.0,
-          bottom: 20,
-          left: 30.0,
-          right: 30,
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SubjectViewModel(
+              decoration: new BoxDecoration(
+                color:Colors.grey.withOpacity(0.3),
+              ),
+              child: SubjectViewModel(
                 subject: subjects[2],
               ),
-            ],
+            ),
           ),
-        ),
+        )
       ]),
-      // new Row(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   children: <Widget>[
-      //     SubjectViewModel(
-      //       subject: subjects[2],
-      //     )
-      //   ],
-      // ),
       new SizedBox(
         height: 10.0,
       ),
@@ -225,7 +206,7 @@ class HomeScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   // color: Colors.white54,
                   image: new DecorationImage(
-                      image: AssetImage('assets/geography.jpg'),
+                      image: AssetImage('assets/civics.jpg'),
                       fit: BoxFit.cover)),
             ),
           ),
@@ -246,164 +227,131 @@ class HomeScreen extends StatelessWidget {
       new SizedBox(
         height: 10.0,
       ),
-      Stack(children: <Widget>[
+    Stack(children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 10.0),
-          child: Opacity(
-            opacity: 0.5,
-            child: Container(
+          padding: const EdgeInsets.only(top: 2.0),
+          child: Container(
+            width: double.infinity,
+            height: 200.0,
+            decoration: BoxDecoration(                
+                image: new DecorationImage(
+                    image: AssetImage('assets/geo.jpg'),
+                    fit: BoxFit.cover)),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top:2.0),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+            child: new Container(
               width: double.infinity,
               height: 200.0,
-              decoration: BoxDecoration(
-                  // color: Colors.white54,
-                  image: new DecorationImage(
-                      image: AssetImage('assets/geo.jpg'), fit: BoxFit.cover)),
-            ),
-          ),
-        ),
-        Positioned(
-          //top: 20.0,
-          //bottom: 20,
-          // left: 30.0,
-          // right: 30,
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SubjectViewModel(
+              decoration: new BoxDecoration(
+                color:Colors.grey.withOpacity(0.3),
+              ),
+              child: SubjectViewModel(
                 subject: subjects[4],
               ),
-            ],
+            ),
           ),
-        ),
+        )      
       ]),
-      // new Row(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   children: <Widget>[
-      //     SubjectViewModel(
-      //       subject: subjects[4],
-      //     )
-      //   ],
-      // ),
       new SizedBox(
         height: 10.0,
       ),
-      Stack(children: <Widget>[
+         Stack(children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 10.0),
-          child: Opacity(
-            opacity: 0.5,
-            child: Container(
-              width: double.infinity,
-              height: 150.0,
-              decoration: BoxDecoration(
-                  // color: Colors.white54,
-                  image: new DecorationImage(
-                      image: AssetImage('assets/science.png'),
-                      fit: BoxFit.cover)),
-            ),
+          padding: const EdgeInsets.only(top: 2.0),
+          child: Container(
+            width: double.infinity,
+            height: 200.0,
+            decoration: BoxDecoration(                
+                image: new DecorationImage(
+                    image: AssetImage('assets/hindi.jpg'),
+                    fit: BoxFit.cover)),
           ),
         ),
-        Positioned(
-          top: 50.0,
-          left: 50.0,
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SubjectViewModel(
+        Padding(
+          padding: const EdgeInsets.only(top:2.0),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+            child: new Container(
+              width: double.infinity,
+              height: 200.0,
+              decoration: new BoxDecoration(
+                color:Colors.grey.withOpacity(0.3),
+              ),
+              child: SubjectViewModel(
                 subject: subjects[5],
               ),
-            ],
+            ),
           ),
-        ),
+        )      
       ]),
-      // new Row(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   children: <Widget>[
-      //     SubjectViewModel(
-      //       subject: subjects[5],
-      //     )
-      //   ],
-      // ),
       new SizedBox(
         height: 10.0,
       ),
-      Stack(children: <Widget>[
+       Stack(children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 10.0),
-          child: Opacity(
-            opacity: 0.5,
-            child: Container(
-              width: double.infinity,
-              height: 150.0,
-              decoration: BoxDecoration(
-                  // color: Colors.white54,
-                  image: new DecorationImage(
-                      image: AssetImage('assets/science.png'),
-                      fit: BoxFit.cover)),
-            ),
+          padding: const EdgeInsets.only(top: 2.0),
+          child: Container(
+            width: double.infinity,
+            height: 200.0,
+            decoration: BoxDecoration(                
+                image: new DecorationImage(
+                    image: AssetImage('assets/English.jpg'),
+                    fit: BoxFit.cover)),
           ),
         ),
-        Positioned(
-          top: 50.0,
-          left: 50.0,
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SubjectViewModel(
+        Padding(
+          padding: const EdgeInsets.only(top:2.0),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+            child: new Container(
+              width: double.infinity,
+              height: 200.0,
+              decoration: new BoxDecoration(
+                color:Colors.grey.withOpacity(0.3),
+              ),
+              child: SubjectViewModel(
                 subject: subjects[6],
               ),
-            ],
+            ),
           ),
-        ),
+        )      
       ]),
-      // new Row(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   children: <Widget>[
-      //     SubjectViewModel(
-      //       subject: subjects[6],
-      //     )
-      //   ],
-      // ),
       new SizedBox(
         height: 10.0,
       ),
-      Stack(children: <Widget>[
+     Stack(children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 10.0),
-          child: Opacity(
-            opacity: 0.5,
-            child: Container(
-              width: double.infinity,
-              height: 150.0,
-              decoration: BoxDecoration(
-                  // color: Colors.white54,
-                  image: new DecorationImage(
-                      image: AssetImage('assets/science.png'),
-                      fit: BoxFit.cover)),
-            ),
+          padding: const EdgeInsets.only(top: 2.0),
+          child: Container(
+            width: double.infinity,
+            height: 200.0,
+            decoration: BoxDecoration(                
+                image: new DecorationImage(
+                    image: AssetImage('assets/french.jpg'),
+                    fit: BoxFit.cover)),
           ),
         ),
-        Positioned(
-          top: 50.0,
-          left: 50.0,
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SubjectViewModel(
+        Padding(
+          padding: const EdgeInsets.only(top:2.0),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+            child: new Container(
+              width: double.infinity,
+              height: 200.0,
+              decoration: new BoxDecoration(
+                color:Colors.grey.withOpacity(0.3),
+              ),
+              child: SubjectViewModel(
                 subject: subjects[7],
               ),
-            ],
+            ),
           ),
-        ),
+        )      
       ]),
-      // new Row(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   children: <Widget>[
-      //     SubjectViewModel(
-      //       subject: subjects[7],
-      //     )
-      //   ],
-      // ),
       new SizedBox(
         height: 10.0,
       ),
