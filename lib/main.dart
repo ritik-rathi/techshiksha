@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:techshiksha_student/LoginPage/loginPage.dart';
 import 'package:techshiksha_student/student_screens/attendance.dart';
+import 'package:techshiksha_student/student_screens/entry_screen.dart';
 import 'package:techshiksha_student/student_screens/testscores.dart';
 // import 'package:techshiksha_student/screens/navigation_screen.dart';
 import 'student_screens/main_screen.dart';
@@ -19,11 +20,11 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: MainScreen(),
+        home: EntryScreen(),
         initialRoute: '.',
         theme: ThemeData.light(),
         routes: {
-          '.':(context) => MainScreen(),
+          '.':(context) => EntryScreen(),
           '/home':(context)=> MainScreen(),
           '/science': (context) => SubjectViewModel(),
           '/navscreen':(context)=>NavigationScreen(),
