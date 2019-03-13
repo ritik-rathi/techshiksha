@@ -29,17 +29,18 @@ class _AttendanceState extends State<Attendance> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       //backgroundColor: Colors.teal[50],
-      appBar: new AppBar(
-        title: Text('Attendance'),
-      ),
-      body: Column(children: <Widget>[
+      // appBar: new AppBar(
+      //   title: Text('Attendance'),
+      // ),
+      body: ListView(children: <Widget>[
         CalendarCarousel(
           width: double.infinity,
           height: 500,
-          markedDatesMap: EventList(events: <DateTime, List<dynamic>>{
-            new DateTime(2019, 3, 15): ["Party"]
-          }),
+          // markedDatesMap: EventList(events: <DateTime, List<dynamic>>{
+          //   new DateTime(2019, 3, 15): ["Party"]
+          // }),
           markedDateShowIcon: false,
           markedDateIconBorderColor: attendance(),
           todayButtonColor: attendance(),
