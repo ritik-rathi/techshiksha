@@ -10,6 +10,9 @@ import 'student_screens/nav.dart';
 import 'student_screens/ncert.dart';
 import 'student_screens/hw.dart';
 import 'student_screens/profile.dart';
+import 'teacher_screen/opening.dart';
+import 'teacher_screen/takeAttendance.dart';
+import 'teacher_screen/upload.dart';
 
 void main(){
   runApp(MyApp());
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget{
         theme: ThemeData.light(),
         routes: {
           '.':(context) => EntryScreen(),
-          '/home':(context)=> MainScreen(),
+          '/home':(context)=> TeacherMain(),
           '/science': (context) => SubjectViewModel(),
           '/navscreen':(context)=>NavigationScreen(),
           '/ncert': (context) => Ncert(),
@@ -34,7 +37,9 @@ class MyApp extends StatelessWidget{
           '/Scores':(context)=> TestScore(),
           // '/drawer': (context) => Drawer1()
           '/SubScore' : (context) => Scores(),
-          '/hw' : (context) => Hw()
+          '/hw' : (context) => Hw(),
+          '/take': (context) => TakeAttendance(),
+          '/upload': (context) => Upload()
         },
     );
   }

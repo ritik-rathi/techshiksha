@@ -15,7 +15,7 @@ final titles = [
   new SubDetail(title: 'TESTS', img: 'assets/test.png', path: '/ncert'),
   new SubDetail(title: 'Home\n Work', img: 'assets/hw1.png', path: '/hw'),
   new SubDetail(
-      title: 'Reference\n     Book', img: 'assets/book.png', path: '/ncert')
+      title: 'Ref.\nBook', img: 'assets/book.png', path: '/ncert')
 ];
 
 class Cards extends StatelessWidget {
@@ -43,9 +43,15 @@ class Cards extends StatelessWidget {
                 child: Text(
                   subs.title,
                   style: TextStyle(
-                      color: color22,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
+                    color: color11,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(color: color22, offset: Offset(-1.0, 2.0)),
+                      Shadow(color: color22, offset: Offset(-2.0, -2.0)),
+                      Shadow(color: color22, offset: Offset(1.0, -2.0))
+                    ],
+                  ),
                 ),
               ))),
       onTap: () {
@@ -110,11 +116,20 @@ class NavigationScreen extends StatelessWidget {
                 child: Text(
                   sub_final,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 60.0,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(color: Colors.black, offset: Offset(-1.0, 2.0)),
+                      Shadow(color: Colors.black, offset: Offset(-2.0, -2.0)),
+                      Shadow(color: Colors.black, offset: Offset(1.0, -2.0))
+                    ],
+                  ),
                 ),
                 top: 50.0,
-                left: 80.0,
-                right: 80,
+                left: 30.0,
+                right: 30,
               ),
               Positioned(
                 top: 140,

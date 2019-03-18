@@ -50,7 +50,7 @@ class MainScreenState extends State<MainScreen>
                         title: Text("Hello\nRitik Rathi!",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 16.0,
+                              fontSize: 25.0,
                             )),
                         background: DecoratedBox(
                           decoration: new BoxDecoration(

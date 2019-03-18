@@ -27,7 +27,10 @@ class Tests extends StatelessWidget {
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight)),
             child: Center(
-              child: Text(subj.sub, style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+              child: Text(
+                subj.sub,
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
             )));
   }
 }
@@ -37,7 +40,6 @@ class TestScore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[50],
       // appBar: new AppBar(
       //   title: Text('Test Scores'),
       //   backgroundColor: Colors.teal[300],
@@ -129,26 +131,29 @@ class _ScoresState extends State<Scores> {
         backgroundColor: testColor,
       ),
       body: Container(
-        margin: EdgeInsets.only(top: 16, right: 100, left: 100),
-        child: ListView.builder(
-        itemBuilder: (BuildContext context, index) {
-          return Column(
-            children: <Widget>[
-              
-              GestureDetector(
-              onTap: () {},
-              child: Container(
-                child: Text('Test number ${index + 1}', textAlign: TextAlign.center,style: TextStyle(color: Colors.grey ,fontSize: 20.0), ),
-                height: 30.0,
-              )),
-              Divider(
-                height: 20,
-                color: testColor,
-              ),
-            ],
-          );
-        },
-      )),
+          margin: EdgeInsets.only(top: 16, right: 100, left: 100),
+          child: ListView.builder(
+            itemBuilder: (BuildContext context, index) {
+              return Column(
+                children: <Widget>[
+                  GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        child: Text(
+                          'Test number ${index + 1}',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.grey, fontSize: 20.0),
+                        ),
+                        height: 30.0,
+                      )),
+                  Divider(
+                    height: 20,
+                    color: testColor,
+                  ),
+                ],
+              );
+            },
+          )),
     );
   }
 }

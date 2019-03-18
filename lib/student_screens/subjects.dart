@@ -19,17 +19,17 @@ final subjects = [
   new Subjects(
       sub: 'Science',
       imgPath: 'assets/science_col.png',
-      color1: Colors.cyan[50],
+      color1: Colors.red[100],
       color2: Colors.redAccent),
   new Subjects(
       sub: 'Maths',
       imgPath: 'assets/math_icon.png',
-      color1: Colors.yellow,
+      color1: Colors.blue[100],
       color2: Colors.blueAccent),
   new Subjects(
       sub: 'History',
       imgPath: 'assets/his_col.jpg',
-      color1: Colors.orange[50],
+      color1: Colors.brown[200],
       color2: Colors.brown),
   new Subjects(
       sub: 'Civics',
