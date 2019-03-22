@@ -14,6 +14,7 @@ import 'teacher_screen/opening.dart';
 import 'teacher_screen/takeAttendance.dart';
 import 'teacher_screen/upload.dart';
 import 'entry/choose.dart';
+import 'parent_screen/start.dart';
 
 void main(){
   runApp(MyApp());
@@ -43,7 +44,8 @@ class MyApp extends StatelessWidget{
           '/upload': (context) => Upload(),
           //'choose': (context) => Choose()
           '/student': (context) => MainScreen(),
-          '/teacher': (context) => TeacherMain()
+          '/teacher': (context) => TeacherMain(),
+          '/parent': (context) => PStart()
         },
     );
   }

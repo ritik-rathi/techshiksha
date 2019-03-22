@@ -32,16 +32,16 @@ class Containers extends StatelessWidget {
         decoration: BoxDecoration(
             boxShadow: [
               new BoxShadow(
-                  color: Color(0xFFE1306C), offset: Offset(3, 3), blurRadius: 1)
+                  color: Color(0xFFE20ab4), offset: Offset(3, 3), blurRadius: 1)
             ],
             color: Colors.white,
-            border: Border.all(width: 2, color: Color(0xFFE1306C)),
+            border: Border.all(width: 2, color: Color(0xFFE20ab4)),
             borderRadius: BorderRadius.circular(5)),
         child: Center(
           child: Text(
             t.title,
             style: TextStyle(
-                color: Color(0xFFE1306C),
+                color: Color(0xFFE20ab4),
                 fontSize: 20,
                 fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
@@ -58,7 +58,7 @@ class TeacherMain extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('HOME'),
-        backgroundColor: Color(0xFFE1306C),
+        backgroundColor: Color(0xFFE20ab4),
       ),
       body: ListView(
         children: <Widget>[

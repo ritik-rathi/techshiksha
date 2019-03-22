@@ -64,7 +64,7 @@ class _ChooseState extends State<Choose> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               onPressed: () {
-                Navigator.pushNamed(context, '/teacher');
+                Navigator.pushNamed(context, '/parent');
               },
               child: Text(
                 'PARENT',
