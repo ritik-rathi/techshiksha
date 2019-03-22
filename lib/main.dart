@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:techshiksha_student/LoginPage/loginPage.dart';
 import 'package:techshiksha_student/student_screens/attendance.dart';
-import 'package:techshiksha_student/student_screens/entry_screen.dart';
+import 'package:techshiksha_student/entry/entry_screen.dart';
 import 'package:techshiksha_student/student_screens/testscores.dart';
 // import 'package:techshiksha_student/screens/navigation_screen.dart';
 import 'student_screens/main_screen.dart';
@@ -13,6 +13,7 @@ import 'student_screens/profile.dart';
 import 'teacher_screen/opening.dart';
 import 'teacher_screen/takeAttendance.dart';
 import 'teacher_screen/upload.dart';
+import 'entry/choose.dart';
 
 void main(){
   runApp(MyApp());
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget{
         theme: ThemeData.light(),
         routes: {
           '.':(context) => EntryScreen(),
-          '/home':(context)=> TeacherMain(),
+          '/home':(context)=> Choose(),
           '/science': (context) => SubjectViewModel(),
           '/navscreen':(context)=>NavigationScreen(),
           '/ncert': (context) => Ncert(),
@@ -39,7 +40,10 @@ class MyApp extends StatelessWidget{
           '/SubScore' : (context) => Scores(),
           '/hw' : (context) => Hw(),
           '/take': (context) => TakeAttendance(),
-          '/upload': (context) => Upload()
+          '/upload': (context) => Upload(),
+          //'choose': (context) => Choose()
+          '/student': (context) => MainScreen(),
+          '/teacher': (context) => TeacherMain()
         },
     );
   }
