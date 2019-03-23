@@ -22,26 +22,32 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                       // Padding(
                       //   padding: EdgeInsets.only(left: 16),
                       // ),
-                      Text(
-                        '${index + 1}. Student ${index + 1}',
-                        style: TextStyle(
-                          fontSize: 15,
+                      Expanded(
+                                              child: Text(
+                          '${index + 1}. Student ${index + 1}',
+                          style: TextStyle(
+                            fontSize: 15,
+                          ),
                         ),
                       ),
 
                       SizedBox(width: 50),
-                      RaisedButton(
-                        onPressed: () {},
-                        color: Colors.green,
-                        child: Text('PRESENT'),
+                      Expanded(
+                                              child: RaisedButton(
+                          onPressed: () {},
+                          color: Colors.green,
+                          child: Text('PRESENT'),
+                        ),
                       ),
 
                       SizedBox(width: 10),
-                      RaisedButton(
-                        onPressed: () {},
-                        color: Colors.red,
-                        child: Text(
-                          'ABSENT',
+                      Expanded(
+                                              child: RaisedButton(
+                          onPressed: () {},
+                          color: Colors.red,
+                          child: Text(
+                            'ABSENT',
+                          ),
                         ),
                       ),
                     ],
