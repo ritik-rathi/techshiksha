@@ -15,7 +15,6 @@ class _UploadState extends State<Upload> {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
 
     setState(() {
-      // TODO: implement setState
       _image = image;
     });
   }
@@ -30,7 +29,20 @@ class _UploadState extends State<Upload> {
         child: Icon(Icons.add_a_photo),
       ),
       body: Center(
-        child: _image == null ? Text('No image selected.') : Image.file(_image),
+        child: _image == null
+            ? Text('No image selected.')
+            : Container(
+                width: 200.0,
+                height: 200.0,
+                decoration: BoxDecoration(
+                  border: new Border.all(width: 2.0 , color: Colors.black),
+                  borderRadius: BorderRadius.circular(10.0),
+                  image: DecorationImage(
+                   image:FileImage(_image),
+                   fit: BoxFit.cover
+                  )
+                ),
+              ),
       ),
     );
   }
