@@ -23,7 +23,7 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                       //   padding: EdgeInsets.only(left: 16),
                       // ),
                       Expanded(
-                                              child: Text(
+                        child: Text(
                           '${index + 1}. Student ${index + 1}',
                           style: TextStyle(
                             fontSize: 15,
@@ -33,7 +33,7 @@ class _TakeAttendanceState extends State<TakeAttendance> {
 
                       SizedBox(width: 50),
                       Expanded(
-                                              child: RaisedButton(
+                        child: RaisedButton(
                           onPressed: () {},
                           color: Colors.green,
                           child: Text('PRESENT'),
@@ -42,7 +42,7 @@ class _TakeAttendanceState extends State<TakeAttendance> {
 
                       SizedBox(width: 10),
                       Expanded(
-                                              child: RaisedButton(
+                        child: RaisedButton(
                           onPressed: () {},
                           color: Colors.red,
                           child: Text(
