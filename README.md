@@ -1,6 +1,7 @@
 # techshiksha_student
 
 A new Flutter project.
+#Techshiksha App for student
 
 ## Getting Started
 
