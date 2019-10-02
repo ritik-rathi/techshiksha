@@ -9,7 +9,7 @@ class Ncert extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           SizedBox(
-              height: 100,
+              height: 95,
               child: DecoratedBox(
                 decoration: new BoxDecoration(
                     gradient: LinearGradient(
