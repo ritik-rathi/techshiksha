@@ -2,6 +2,7 @@
 
 A new Flutter project.
 #Techshiksha App for student
+#App for iOS and android
 
 ## Getting Started
 
